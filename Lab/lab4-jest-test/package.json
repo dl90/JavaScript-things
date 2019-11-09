@@ -1,0 +1,14 @@
+{
+  "name": "lab4test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lab4raw.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}

@@ -1,0 +1,138 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+body, h1, p, ul {
+  margin: 0;
+}
+
+.formBlock {
+  width: 1000px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#loginBlock {
+  display: block;
+}
+
+#selection {
+  margin: 10px;
+  margin-left: 50px;
+}
+
+.content {
+  width: 1000px;
+  margin: auto;
+  /*
+  this also seems to work but I'm guessing it depends on resolution.
+  margin-left: 20%;
+  margin-right: 20%;
+  */
+}
+
+/*
+header-block stuff
+*/
+#header-block {
+  background-color: lightblue;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  line-height: 1.5;  
+  border-bottom: 3px solid black;
+}
+#header-block h1 {
+  color: white;
+  margin-bottom: 20px;
+}
+#header-list {
+  list-style: none;
+  padding: 0;
+}
+#header-block a {
+  color: white;
+  text-decoration: none;
+}
+#header-block a:hover {
+  color: lightpink;
+  text-decoration: underline;
+}
+
+/*
+banner-block stuff
+*/
+#banner-block {
+  background-color: lightpink;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-top: 3px solid black;
+}
+#banner-block h1 {
+  color: white;
+  font-size: 50px;
+  text-align: center;
+}
+#banner-block img {
+  border: 5px solid black;
+  display: block;
+  margin: auto;
+}
+
+/*
+quotes-block stuff
+*/
+#quotes-block {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+#quotes-block h2 {
+  font-size: 40px;
+  text-align: center;
+}
+#quotes-block ul {
+  text-align: center;
+  list-style: none;
+  padding: 0;
+  line-height: 3;
+  font-size: 30px;
+}
+#unusually-long-quote {
+  line-height: 1.2;
+}
+
+/*
+about-block stuff
+*/
+#about-block {
+  background-color: lightpink;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  
+}
+#about-block h2 {
+  text-align: center;
+  font-size: 40px;
+  color: white;
+}
+#about-block p {
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  font-size: 20px;
+}
+
+/*
+footer-block stuff
+*/
+#footer-block {
+  background-color: lightblue;
+  border-top: 3px solid black;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+#footer-block p {
+  color: white;
+  text-align: center;
+}
