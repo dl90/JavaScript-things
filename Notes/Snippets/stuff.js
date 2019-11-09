@@ -53,3 +53,22 @@ function makeHistogram (arrString) {
 }
 
 console.log(makeHistogram(["bob", "jim", "bob"]));
+
+
+
+//turns string to arr
+// const stringToArr = (str) => {
+
+//   let iterator = str[Symbol.iterator]();
+//   let theChar = iterator.next();
+//   const strArr = []
+
+//   //iterator through string and add to strArr
+//   while(!theChar.done && theChar.value !== '') {
+//       strArr.push(theChar.value);
+//       theChar = iterator.next();
+//   }
+//   return strArr;
+// }
+// let test = stringToArr("abcdefgh   ");
+// console.log(test);
