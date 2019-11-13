@@ -12,21 +12,23 @@ const mealWeightObj = {
 };
 
 
-
-//reads file
-
+/**
+ * Reads the file, wrapped in a Promise.
+ * @param {string} fileLocation Location of file.
+ * @returns {Promise} Promise containing readFile.
+ */
 const readFile = (fileLocation) => {
   return new Promise( (resolve, reject) => {
     fs.readFile(fileLocation, "utf-8", (err, data) => {
       if (err ) {
         reject(err.message);
       } else if (data.length < 0) {
-        reject(new Error ("File is empty."))
+        reject(err = new Error ("File is empty."))
       } else {
         resolve(data);
       }
     })
-  })
+  }) 
 }
 readFile(fileLocation)
   .then(data => dataSplit(data))
@@ -93,13 +95,11 @@ const categorySplit = (arr) => {
     }
   }
 
-
   //removes mealWeight from elements
   for(ele of sortValues){
     let str = ele.substring(1);
     sortedCategoryArr.push(str);
   }
-
   bubbleSort(categorySortedDataArr,sortedCategoryArr);
 }
 
@@ -146,7 +146,7 @@ const stringGeneration = (arr,categoryArr) => {
       }
     }
   }
-  writeFile(finalStringTOAppend)
+writeFile(finalStringTOAppend)
   .then(console.log( writeFileName + " - sucessfully written."))
   .catch(err => console.log(err));
 writeHtmlFile(finalStringTOAppend)
@@ -173,6 +173,8 @@ const writeFile = (str) => {
 const writeHtmlFile = (str) => {
   return new Promise( (resolve, reject) => {
     let menuStringToAppend = "";
+    const HtmlTitle = "Menu";
+    const BootStrapLink = ("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\"");
     const finalStringArr = str.split("\n")
     for(ele of finalStringArr) {
       menuStringToAppend += ( "    " + ele + "<br>\n" );
@@ -185,7 +187,8 @@ const writeHtmlFile = (str) => {
     + "  <meta charset=\"UTF-8\">\n"
     + "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
     + "  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n"
-    + "  <title>Menu</title>\n"
+    + `  <title>${HtmlTitle}</title>\n`
+    + `  <link rel=\"stylesheet\" href=\"${BootStrapLink}>\n`
     + "</head>\n"
     + "<body id=\"body\">\n"
     + "  <p id=\"menu\">\n" );
@@ -199,7 +202,7 @@ const writeHtmlFile = (str) => {
       if(err) {
         reject (err.message);
       } else {
-        resolve (str)
+        resolve ();
       }
     })
   })
