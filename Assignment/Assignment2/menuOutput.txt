@@ -1,12 +1,12 @@
-
-* BREAKFAST ITEMS *
+ * Breakfast Items *
 $20.86	breakfast combo b, combo
 $8.10	sushi, 6 rolls
 
-* LUNCH ITEMS *
+ * Lunch Items *
 $28.06	bento box a - chicken, box combo
 $11.70	tuna roll, 3 rolls
 
-* DINNER ITEMS *
+ * Dinner Items *
 $10.06	breakfast combo c, combo
 $7.11	roe, 2 rolls
+
