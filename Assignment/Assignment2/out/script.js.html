@@ -1,6 +1,34 @@
-/**
- * @author Don
- */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+*Don Li
+*/
 
 const fs = require ("fs");
 
@@ -47,7 +75,7 @@ const readFile = (fileLocation) => {
     fs.readFile(fileLocation, "utf-8", (err, data) => {
       if (err ) {
         reject(err.message);
-      } else if (data.length < 0) {
+      } else if (data.length &lt; 0) {
         reject(err = new Error ("File is empty."))
       } else {
         resolve(data);
@@ -125,7 +153,7 @@ const categorySplit = (arr, mealWeightObj) => {
 
   //goes through arr and groups them together by category
   //may be redundent thanks to categorySort and bubbleSort
-  for(let i = 0; i < categoryArr.length; i++) {
+  for(let i = 0; i &lt; categoryArr.length; i++) {
     for(ele of arr) {
       if(ele[0] === categoryArr[i]) {
         categorySortedDataArr.push(ele);
@@ -138,14 +166,14 @@ const categorySplit = (arr, mealWeightObj) => {
   * @const sortValues: Temp array used to store categoryArr with adds weight value specified on the mealWeightObj
   */
   const sortValues = [];
-  for(let i = 0; i < categoryArr.length; i++) {
+  for(let i = 0; i &lt; categoryArr.length; i++) {
     if(Object.keys(mealWeightObj).includes(categoryArr[i])) {
       sortValues.push(mealWeightObj[categoryArr[i]] + categoryArr[i]) 
     }
   }
 
   //sorts categoryArr with something similar to bubble sort
-  for(let i = 0; i < sortValues.length -1; i++) {
+  for(let i = 0; i &lt; sortValues.length -1; i++) {
     if( sortValues[i] > sortValues[i+1]) {
       let temp = sortValues[i];
       sortValues[i] = sortValues[i+1];
@@ -171,9 +199,9 @@ const categorySplit = (arr, mealWeightObj) => {
 * @returns {array} sorted 2D array
 */
 const bubbleSort = (arr, categoryArr) => {
-  for(let i = 0; i < categoryArr.length; i++) {
-    for (let j = 0; j < arr.length; j++) {
-      for(let k = 0; k < (arr.length - j - 1); k++) {
+  for(let i = 0; i &lt; categoryArr.length; i++) {
+    for (let j = 0; j &lt; arr.length; j++) {
+      for(let k = 0; k &lt; (arr.length - j - 1); k++) {
         if (arr[k][0] === categoryArr[i]) {
           if(arr[k][1] > arr[k+1][1]) {
             let temp = arr[k];
@@ -222,13 +250,13 @@ const stringGeneration = (arr, categoryArr) => {
    */
   let finalHtmlStringToAppend = ""
 
-  for(let i = 0; i < categoryArr.length; i++) {
+  for(let i = 0; i &lt; categoryArr.length; i++) {
     finalTxtStringToAppend += " * " + categoryArr[i].toLowerCase().charAt(0).toUpperCase() + categoryArr[i].substring(1) + " Items *\n";
     finalHtmlStringToAppend += " * " + categoryArr[i].toLowerCase().charAt(0).toUpperCase() + categoryArr[i].substring(1) + " Items *\n";
     for(ele of arr) {
-      if (ele[0] === categoryArr[i] && categoryArr[i] !== undefined ) {
+      if (ele[0] === categoryArr[i] &amp;&amp; categoryArr[i] !== undefined ) {
         finalTxtStringToAppend += ele[3] + "\t" + ele[1] + ", " + ele[2] + "\n";
-        finalHtmlStringToAppend += ele[3] + " &emsp; " + ele[1] + ", " + ele[2] + "\n";
+        finalHtmlStringToAppend += ele[3] + " &amp;emsp; " + ele[1] + ", " + ele[2] + "\n";
       }
     }
     finalTxtStringToAppend += "\n";
@@ -262,22 +290,22 @@ const writeHtmlFile = (writeHtmlFileName, str) => {
      */
     const finalStringArr = str.split("\n")
     for(ele of finalStringArr) {
-      menuStringToAppend += ( "    " + ele + "<br>\n" );
+      menuStringToAppend += ( "    " + ele + "&lt;br>\n" );
     }
 
     /**
      * @let htmlBoiler: htmlBoiler string appended with menuString
      */
     let htmlBoiler = 
-     ( "\<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n"
-    + "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
-    + "  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n"
-    + `  <title>${HtmlTitle}</title>\n`
-    + `  <link rel=\"stylesheet\" href=\"${BootStrapLink}>\n`
-    + "</head>\n\n<body id=\"body\">\n  <p id=\"menu\">\n" );
+     ( "\&lt;!DOCTYPE html>\n&lt;html lang=\"en\">\n&lt;head>\n&lt;meta charset=\"UTF-8\">\n"
+    + "  &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+    + "  &lt;meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n"
+    + `  &lt;title>${HtmlTitle}&lt;/title>\n`
+    + `  &lt;link rel=\"stylesheet\" href=\"${BootStrapLink}>\n`
+    + "&lt;/head>\n\n&lt;body id=\"body\">\n  &lt;p id=\"menu\">\n" );
     
     htmlBoiler += ( menuStringToAppend
-    + "  </p>\n</body>\n</html>\n" );
+    + "  &lt;/p>\n&lt;/body>\n&lt;/html>\n" );
 
     resolve( writeFile(writeHtmlFileName, htmlBoiler));
   })
@@ -301,3 +329,26 @@ const writeFile = (writeFileName ,str) => {
 }
 
 module.exports = { readFile, dataSplit, categorySplit, bubbleSort, priceCalc, stringGeneration, writeHtmlFile, writeFile }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BootStrapLink:">BootStrapLink:</a></li><li><a href="global.html#bubbleSort">bubbleSort</a></li><li><a href="global.html#categoryArr:">categoryArr:</a></li><li><a href="global.html#categorySortedDataArr:">categorySortedDataArr:</a></li><li><a href="global.html#categorySplit">categorySplit</a></li><li><a href="global.html#dataArr:">dataArr:</a></li><li><a href="global.html#dataSplit">dataSplit</a></li><li><a href="global.html#fileLocation:">fileLocation:</a></li><li><a href="global.html#finalArr:">finalArr:</a></li><li><a href="global.html#finalStringArr:">finalStringArr:</a></li><li><a href="global.html#HtmlTitle:">HtmlTitle:</a></li><li><a href="global.html#mealWeightObj:">mealWeightObj:</a></li><li><a href="global.html#priceCalc">priceCalc</a></li><li><a href="global.html#readFile">readFile</a></li><li><a href="global.html#sortedCategoryArr:">sortedCategoryArr:</a></li><li><a href="global.html#sortValues:">sortValues:</a></li><li><a href="global.html#stringGeneration">stringGeneration</a></li><li><a href="global.html#writeFile">writeFile</a></li><li><a href="global.html#writeFileName:">writeFileName:</a></li><li><a href="global.html#writeHtmlFile">writeHtmlFile</a></li><li><a href="global.html#writeHtmlFileName:">writeHtmlFileName:</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Fri Nov 15 2019 12:34:26 GMT-0800 (Pacific Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

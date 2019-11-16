@@ -2,8 +2,8 @@
 Don
 */
 
-// const performance = require("perf_hooks");
-// const start = performance.performance.now();
+const performance = require("perf_hooks");
+const start = performance.performance.now();
 
 //------------dependencies----------------//
 /**
@@ -51,3 +51,9 @@ readFile(fileLocation)
 //   .then( data =>  bubbleSort(categorySplit(dataSplit(data), mealWeightObj))
 
 //   ).catch(err => console.log(err));
+
+/**
+ * @let used to calculate program runtime
+ */
+let end = performance.performance.now();
+console.info( ("Runtime: " + (end - start) + " ms") );

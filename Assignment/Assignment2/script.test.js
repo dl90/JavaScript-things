@@ -12,11 +12,11 @@ const writeHtmlFile = require("./script").writeHtmlFile;
 const writeFile = require("./script").writeFile;
 
 test('bubbleSort', () => {
-  expect(bubbleSort([[dinner, abcd],[lunch, aaab],[breakfast, aaaa]], [breakfast, lunch, dinner]))
-  .toMatchObject('[[breakfast, aaaa], [lunch, aaab], [dinner, abcd]]');
+  expect(bubbleSort([["dinner", "abcd", "a", "b"],["lunch", "aaab", "a", "b"],["breakfast", "aaaa" , "a" ,"b"]], ["breakfast", "lunch", "dinner"]))
+  .toMatchObject([["breakfast", "aaaa" , "a", "$NaN"], ["lunch", "aaab", "a", "$NaN"], ["dinner", "abcd", "a", "$NaN"]]);
 });
 
 test('priceCalc', () => {
-  expect(priceCalc([a,a,a,$10], [abcd]))
-  .toMatchObject('[a,a,a,$18.00]');
+  expect(priceCalc([["a","a","a","$1"]], ["a","b","c"]))
+  .toMatchObject([["a","a","a","$1.80"]]);
 })
