@@ -10,8 +10,7 @@ function Stack() {
     this.pop = function () {
       const topStack = (items.length -1);
       if(topStack > -1) {
-        items.pop();
-        return items;
+        return items.pop();
       } else {
         return undefined;
       }
@@ -19,7 +18,7 @@ function Stack() {
     
     this.peek = function () {
       if(items.length > 0) {
-        return items[items.length];
+        return items[items.length -1];
       } else {
         return undefined;
       }

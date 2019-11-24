@@ -44,7 +44,7 @@ const isUnique = (arr) => { // O(n^2)
   return state;
 }
 
-// console.log(isUnique([1,2,3,4,5,5]));
+//console.log(isUnique([1,2,3,4,5,5]));
 
 const isUniqueObj = (arr) => { // O(n) ~breadcrumb method, caching~
   const cache = {}; //object uses more memory, but relatively inconsequential to conpute time

@@ -36,7 +36,7 @@ function Queue() {
     };
    
     this.size = function () {
-      return items.length();
+      return items.length;
     };
    
     this.toString = function () {

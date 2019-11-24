@@ -19,21 +19,21 @@ function fizzBuzz(n) {
 
   for (let i = 1; i <= n; i ++) {
     if ( i % 15 === 0) {
-      returnStr += "fizzbuzz\n"; 
-      //console.log("fizzbuzz")
+      //returnStr += "fizzbuzz\n"; 
+      console.log("fizzbuzz")
     } else if( i % 3 === 0) {
-      returnStr += "fizz\n";
-      //console.log("fizz");
+      //returnStr += "fizz\n";
+      console.log("fizz");
     } else if ( i % 5 === 0) {
-      returnStr += "buzz\n";
-      //console.log("buzz")
+      //returnStr += "buzz\n";
+      console.log("buzz")
     } else {
-      returnStr += `${i}\n`;
-      //console.log(i);
+      //returnStr += `${i}\n`;
+      console.log(i);
     }
   }
-  console.log(returnStr);
-  return returnStr;
+  //console.log(returnStr);
+  //return returnStr;
 }
 
 module.exports = fizzBuzz;
