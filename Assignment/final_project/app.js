@@ -91,7 +91,7 @@ const readImageDir = (path) => {
 
     fs.readdir(path, (err, files) => {
       if (err) {
-        reject(err);
+        reject(err.message);
       } else {
         resolve(files);
       }
@@ -142,7 +142,7 @@ const grayScale = (arr, readUnzipPath, grayScaleFolderPath) => {
 
     arr.forEach(element => {
       fs.createReadStream(readUnzipPath + `/${ element }`)
-        .pipe(new PNG({ filterType: 4 }))
+        .pipe(new PNG({ filterType: 4 })) //filterType: 54 refers to RGBa
         .on('error', function (err) { reject(err) })
         .on('parsed', function() {
 
@@ -152,7 +152,7 @@ const grayScale = (arr, readUnzipPath, grayScaleFolderPath) => {
           this.pack().pipe(fs.createWriteStream((grayScaleFolderPath + `/${ element }`), 'utf-8'));
           console.log('*** ' + grayScaleFolderPath + `/${ element }` + " - finished writting. ***");
         })
-        .on( 'finish', function () { resolve(console.log("This message will not show up due to not getting the time to resolve.")) });
+        .on('finish', function () { resolve(console.log("This message will not show up due to not getting the time to resolve.")) });
     })
     console.info("GrayScale function exits!");
   })

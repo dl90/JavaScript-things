@@ -43,6 +43,7 @@ function main() {
   .then(filteredArr => {
     grayScale(filteredArr, readUnzipPath, grayScaleFolderPath);
   })
+  // .then(msg => console.log(msg))
   .then(console.log("*** Finished all promise calls?!?! ***"))
   .catch(err => console.log(err.message));
 }
