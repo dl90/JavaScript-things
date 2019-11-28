@@ -10,6 +10,7 @@ body {
   background-color: black;
   font-size: 2em;
   height: 130px;
+  padding-top: 10px;
   width: auto;
 }.page-header-title {
   color: white;
@@ -17,6 +18,7 @@ body {
 }.logo {
   content: url('/Assets/logo.png');
   height: 80%;
+  padding: 10px;
   width: auto
 }
 
@@ -24,22 +26,48 @@ body {
   font-size: 2em;
   display: flex;
   justify-content: center;
-  min-height: 500px;
 }
 
 .form {
+  height: auto;
+  width: auto;
+}.formidable{
   display: flex;
   justify-content: center;
+  align-content: center;
   flex-direction: row;
-  min-height: 300px;
-  height: auto;
+  width: 100%;
+  align-content: center;
+}.title {
+  font-size: 1.2em;
+  text-decoration: none;
+  padding: 1%;
+  margin: 2%;
+}.file-to-upload {
+  font-size: 1.2em;
+  text-decoration: none;
+  border: none;
+  font-size: 1.2empx;
+  padding: 1%;
+  margin: 2%;
+}.form-submit {
+  border: none;
+  font-size: 1.2em;
+  padding: 10px;
+  margin: 2%;
+}.form-submit:hover {
+  background-color: lightgray;
 }
+
 
 .page-footer {
   background-color: black;
+  position: fixed;
+  bottom: 0%;
   display: flex;
+  width: 100%;
   justify-content: center;
-  min-height: 100px;
+  min-height: 10%;
   height: auto;
 }.analysis-text {
   align-content: center;

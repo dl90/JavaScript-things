@@ -18,19 +18,20 @@
 
     <div class="instructions">
       <p class="instruction-text">
-        Choose an image to then submit it.
+        Choose an image to upload, then submit it.
       </p>
     </div>
 
     <div class="form">
-        <form action="/upload" enctype="multipart/form-data" method="post">
-          <input type="text" name="title"  placeholder="Title">
-          <input type="file" name="upload" multiple="multiple">
-          <input type="submit" value="Upload">
+        <form action="/upload" enctype="multipart/form-data" method="post" class="formidable">
+          <input type="text" name="title"  placeholder="Title" class="title">
+          <input type="file" name="upload" multiple="multiple" class="file-to-upload" required minlength="5">
+          <input type="submit" value="Upload" class="form-submit">
         </form>
     </div>
 
     <div class="img-container">
+
     </div>
 
     <footer class="page-footer">
@@ -43,6 +44,6 @@
 
   </content>
 
-  <script src="site-script.js"></script>
+  <!-- <script src="site-script.js"></script> -->
 </body>
 </html>
