@@ -1,0 +1,10 @@
+version: '3.6'
+services:
+  node:
+    container_name: milestone
+    restart: always
+    build: .
+    ports:
+      - '8888:8080'
+    volumes:
+      - /Users/don/GitHub/JavaScript/Assignment/final_project/docker-volume:/don/server-upload

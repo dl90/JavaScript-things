@@ -28,6 +28,20 @@ body {
   justify-content: center;
 }
 
+.img-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}.image {
+  margin: 1%;
+  width: 40%;
+  height: auto;
+}
+
+.footer-spacing {
+  height: 5rem;
+}
+
 .form {
   height: auto;
   width: auto;
