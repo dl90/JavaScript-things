@@ -1,60 +1,76 @@
-const fs = require("fs");
-const dirLocation = `${__dirname}`;
-const bigArr = [];
-const dirArr = [];
+const fs = require('fs');
+const dirLocation = __dirname;
+const trackingArr = [];
+const objArr = [];
+const childrenArr = [];
+const dirString = 'directory';
+const fileString = 'file';
+
 
 readDir(dirLocation);
 
-function readDir (dirName) {
-
-  const dir = fs.readdirSync(dirName);
+function readDir (a) {
+  const dir = fs.readdirSync(a);
   for (ele of dir) {
-
-    const stats = fs.lstatSync(ele);
-
-    const path = dirName;
-    const name = ele
-
-    const size = stats.size;
-    const isDir = stats.isDirectory();
-    const isFile = stats.isFile();
-    let extension = null;
-
-    const extensionIndex = ele.lastIndexOf(".");
-    if(extensionIndex >= 0) {
-      extension = ele.slice(extensionIndex);
-    } else {
-      extension = null;
-    }
-
-    bigArr.push(ele);
-
-    console.log(path);
-    console.log(name);
-    console.log(size);
-    console.log("is Dir: " + isDir);
-    console.log("is File: " + isFile);
-    console.log("extension: " + extension)
-    console.log();
-
-    if(isDir) {
-      dirArr.push(ele);
-    }
-
-  }
-  console.log(dirArr);
-  console.log(bigArr);
-
-  if(dirArr.length > 0) {
-    console.log(__dirname + `/${dirArr[0]}/`);
-    readDir(__dirname + `/${dirArr[0]}/`);
+    readStats(ele, a);
   }
 }
 
 
-const objBuilder = (bigArr, dirArr) => {
+function readStats (file, location) {
+  const stats = fs.lstatSync(location + `/${file}`);
+  const path = location + `/${file}`;
+  const name = file;
+  const size = stats.size;
+
   const obj = {};
-  const objKey = ["Path", "Name", "Size", "Type", "Children", "Extension"];
+  obj.path = path;
+  obj.name = name;
+  obj.size = size;
 
+  if(stats.isFile()) {
+    obj.extension = splitter(file, '.');
+    obj.type = fileString;
+  }
 
+  if(stats.isDirectory()) {
+    obj.type = dirString;
+    obj.children = []
+    // obj.children.push(obj);
+    trackingArr.push(ele);
+  }
+  objArr.push(obj);
 }
+
+
+/**
+ * Finds the last occurance of index in string and returns whatever that follows it
+ * @param { String } str original string
+ * @param { String } index split with
+ * @returns { String } string following last occurance of index
+ */
+function splitter (str, index) {
+  let extension = null;
+  const extensionIndex = str.lastIndexOf(index);
+  if(extensionIndex > 0) {
+    extension = str.slice(extensionIndex);
+  }
+  return extension;
+}
+
+
+tracking(trackingArr)
+
+function tracking (arr) {
+  for(tracking of arr) {
+    for(obj of objArr) {
+      if(obj.name === tracking && obj.children != undefined) {
+        readDir(obj.path)
+        // childrenArr.push(readDir(obj.path));
+        // obj.children = childrenArr
+      } 
+    }
+  }
+}
+
+console.log(objArr);

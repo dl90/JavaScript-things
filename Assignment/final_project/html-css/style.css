@@ -16,7 +16,7 @@ body {
   color: white;
   display: flex;
 }.logo {
-  content: url('/Assets/logo.png');
+  content: url("/PYbmhST9I0sPv52Q.png");
   height: 80%;
   padding: 10px;
   width: auto
@@ -36,10 +36,6 @@ body {
   margin: 1%;
   width: 40%;
   height: auto;
-}
-
-.footer-spacing {
-  height: 5rem;
 }
 
 .form {
@@ -73,8 +69,9 @@ body {
   background-color: lightgray;
 }
 
-
-.page-footer {
+.footer-spacing {
+  height: 5rem;
+}.page-footer {
   background-color: black;
   position: fixed;
   bottom: 0%;

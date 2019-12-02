@@ -1,3 +1,7 @@
+/**
+ * @author Don (dl90)
+ */
+
 const PNG = require("pngjs").PNG;
 const fs = require("fs");
 
@@ -18,6 +22,7 @@ const grayScaleFunc = (dataArr) => {
   }
   return dataArr;
 }
+
 
 /**
  * Reads PNG file using pngjs 
@@ -42,4 +47,20 @@ function grayScale (path, fileName) {
   })
 }
 
-module.exports = { grayScale };
+
+/**
+ * Finds the last occurance of index in string and returns whatever that follows it
+ * @param { String } str original string
+ * @param { String } index split with
+ * @returns { String } string following last occurance of index
+ */
+function splitter (str, index) {
+  let extension = null;
+  const extensionIndex = str.lastIndexOf(index);
+  if(extensionIndex > 0) {
+    extension = str.slice(extensionIndex);
+  }
+  return extension;
+}
+
+module.exports = { grayScale,  splitter };

@@ -1,19 +1,37 @@
+/**
+ * @author Don (dl90)
+ */
+
 const http = require("http");
 const fs = require("fs");
 const formidable = require("formidable");
 const grayScale = require("./html-css/modules/gray-scale").grayScale;
+const splitter = require("./html-css/modules/gray-scale").splitter;
+const formidResponseHtmlString = require("./html-css/modules/formid-res").htmlSuccess;
+const formidResponseFileTypeHtmlString = require("./html-css/modules/formid-res-fail").htmlFail;
 
 const hostName = "localhost";
 const port = 8080;
-const indexHTML = "./html-css/index.html";
-// const uploadedHTML = "./html-css/upload.html";
-const styleCSS = "./html-css/style.css";
-const styleCSSRequest = "/uYWpaV83iuhHZW5f4.css";
-const logoAsset = "./html-css/Assets/logo.png";
-const savePath = __dirname + "/server-upload";
 
-const beforePath = "/Users/don/GitHub/JavaScript/Assignment/final_project/server-upload/in.png";
-const afterPath = "/Users/don/GitHub/JavaScript/Assignment/final_project/server-upload/gray-in.png";
+//html
+const indexHTMLRequest = "/";
+const indexHTML = "./html-css/index.html";
+
+//css
+const styleCSSRequest = "/uYWpaV83iuhHZW5f4.css";
+const styleCSS = "./html-css/style.css";
+
+//js
+const htmlScriptRequest = "/cM2Q6KyZb835gftu.js";
+const htmlScript = "./html-css/script.js";
+
+//logo
+const logoAssetRequest = "/PYbmhST9I0sPv52Q.png";
+const logoAsset = "./html-css/Assets/logo.png";
+
+const savePath = __dirname + "/server-upload";
+let beforePath = __dirname + "/server-upload/.png";
+let afterPath = __dirname + "/server-upload/.png";
 
 
 /**
@@ -21,8 +39,8 @@ const afterPath = "/Users/don/GitHub/JavaScript/Assignment/final_project/server-
  */
 const server = http.createServer( (request, response) => {
 
-  if (request.url === "/") {
-    response.writeHead(200, {'content-type': 'text/html'});
+  if (request.url === indexHTMLRequest) {
+    response.writeHead(200, { 'content-type': 'text/html' });
     response.end( fs.readFileSync(indexHTML, "utf-8"));
   }
 
@@ -31,25 +49,21 @@ const server = http.createServer( (request, response) => {
   }
 
   if (request.url === styleCSSRequest) {
-    response.writeHead(200, {'Content-type' : 'text/css'});
+    response.writeHead(200, { 'Content-type' : 'text/css' });
     response.end( fs.readFileSync(styleCSS, "utf-8"));
   }
 
-  if (request.url === "/Assets/logo.png") {
-    response.writeHead(200, {'Content-type' : 'image/png'});
+  if (request.url === htmlScriptRequest) {
+    response.writeHead(200, { 'Content-type' : 'text/javascript' });
+    response.end( fs.readFileSync(htmlScript, "utf-8"));
+  }
+
+  if (request.url === logoAssetRequest) {
+    response.writeHead(200, { 'Content-type' : 'image/png' });
     response.end( fs.readFileSync(logoAsset), "binary");
   }
 
-  if (request.url === "/bNXE0HIDrrmixWb6-before") {
-    response.writeHead(200, {'Content-type' : 'image/png'});
-    response.end( fs.readFileSync(beforePath), "binary");
-  }
-
-  if (request.url === "/oTIu5mmWd4f3Hb0z-after") {
-    response.writeHead(200, {'Content-type' : 'image/png'});
-    response.end( fs.readFileSync(afterPath), "binary");
-  }
-
+  //formidable
   if (request.url == '/upload' && request.method.toLowerCase() == 'post') {
     var form = new formidable.IncomingForm();
     form.maxFileSize = 20 * 1024 * 1024;
@@ -61,95 +75,93 @@ const server = http.createServer( (request, response) => {
     })
 
     form.parse(request, function(err, fields, files) {
+      let check = files.upload.name;
+      let exten = splitter(check, ".");
 
       if (err) {
         response.writeHead(404, {'content-type': 'text/text'});
         response.end("An error occured: " + err.message);
+      } else if (exten !== ".png") {  //backend PNG check
+        response.writeHead(200, {'content-type': 'text/html'});
+        response.end(formidResponseFileTypeHtmlString);
       } else {
-
         const uploadedPath = files.upload.path;
         const fileName = files.upload.name;
-        console.log(uploadedPath);
+        console.log("File uploaded to: " + uploadedPath);
 
         grayScale(savePath, fileName).then(msg => console.log(msg)).catch(err => console.log(err));
 
-        // response.writeHead(200, {'content-type': 'text/html'});
-        // response.end( fs.readFileSync(uploadedHTML, "utf-8" ))
-
-        response.writeHead(200, {'content-type': 'text/html'});
-        response.end(
-        `<!DOCTYPE html>
-        <html lang="en">
-        <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <meta http-equiv="X-UA-Compatible" content="ie=edge">
-          <title>Success</title>
-          <style>
-          .back-button {
-          border: none;
-          font-size: 1.2em;
-          padding: 10px;
-          margin: 2%;
-        }.back-button:hover {
-          background-color: lightgray;
-        }
-          </style>
-        </head>
-
-        <body>
-          <h1 class="uploaded-message"> File successfully uploaded  😀</h1>
-          <button class="back-button"> Go back to homepage! </button>
-
-          <script>
-            const homepage = "/"
-            const button = document.querySelector(".back-button");
-
-            button.addEventListener('click', event => {
-              event.preventDefault();
-              window.location.replace(homepage);
-            })
-          </script>
-        </body>
-        </html>`
-        );
+        response.writeHead(200, { 'content-type': 'text/html' });
+        response.end(formidResponseHtmlString);
       }
     })
 
     form.on('end', function() {
       readDir(savePath);
     })
+
+    const arr = fs.readdirSync(savePath);
+
+    if (arr.length > 0) {
+      if (request.url === "/bNXE0HIDrrmixWb6-before") {
+        response.writeHead(200, { 'Content-type' : 'image/png' });
+        response.end( fs.readFileSync(beforePath), "binary");
+      }
+    
+      if (request.url === "/oTIu5mmWd4f3Hb0z-after") {
+        response.writeHead(200, { 'Content-type' : 'image/png' });
+        response.end( fs.readFileSync(afterPath), "binary");
+      }
+    } else {
+      if (request.url === "/bNXE0HIDrrmixWb6-before") {
+        response.writeHead(200, { 'Content-type' : 'text/text' });
+        response.end("waiting for image");
+      }
+    
+      if (request.url === "/oTIu5mmWd4f3Hb0z-after") {
+        response.writeHead(200, { 'Content-type' : 'text/text' });
+        response.end("waiting for image");
+      }
+    }
+
     return;
   }
-
 })
 
 
+/**
+ * Reads the directory where the file is uploaded
+ * @param { String } path Location of where PNG file is uploaded
+ */
 function readDir (path)  {
   const arr = fs.readdirSync(path);
   let grayImgFile = null;
   let originalImgFile = null;
 
-  for(ele of arr) {
-
-    const extensionIndex = ele.lastIndexOf(".");
-    if (extensionIndex >= 0) {
-      extension = ele.slice(0, extensionIndex);
-      if (extension.includes("gray")) {
-        grayImgFile = extension;
-      } else {
-        originalImgFile = extension;
+  if (arr.length === 0) {
+    return false
+  } else {
+    for(ele of arr) {
+      const extensionIndex = ele.lastIndexOf(".");
+      if (extensionIndex >= 0) {
+        extension = ele.slice(0, extensionIndex);
+        if (extension.includes("gray")) {
+          grayImgFile = extension;
+        } else {
+          originalImgFile = extension;
+        }
       }
-    } else {
-      throw new Error ("File does not belong here.")
     }
   }
 
-  console.log(grayImgFile);
-  console.log(originalImgFile);
+  beforePath = savePath + `/${originalImgFile}.png`;
+  afterPath = savePath + `/${grayImgFile}.png`;
+
+  // setTimeout(fs.unlinkSync(beforePath), 10000);
+  // setTimeout(fs.unlinkSync(afterPath), 10000);
 }
 
-server.listen(port, hostName, () => {
+server.listen(port, () => {
   console.log(`Server running at http://${hostName}:${port}/`);
 });
 
