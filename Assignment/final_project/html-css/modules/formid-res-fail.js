@@ -1,4 +1,8 @@
 /**
+ * @author Don (dl90)
+ */
+
+/**
  * @const html response file type does not match
  */
 const htmlFail = 

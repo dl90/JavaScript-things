@@ -10,8 +10,10 @@ const splitter = require("./html-css/modules/gray-scale").splitter;
 const formidResponseHtmlString = require("./html-css/modules/formid-res").htmlSuccess;
 const formidResponseFileTypeHtmlString = require("./html-css/modules/formid-res-fail").htmlFail;
 
+//server
 const hostName = "localhost";
 const port = 8080;
+const keyPath = "key.json";
 
 //html
 const indexHTMLRequest = "/";
@@ -29,9 +31,9 @@ const htmlScript = "./html-css/script.js";
 const logoAssetRequest = "/PYbmhST9I0sPv52Q.png";
 const logoAsset = "./html-css/Assets/logo.png";
 
+//pathing
 const savePath = __dirname + "/server-upload";
-let beforePath = __dirname + "/server-upload/.png";
-let afterPath = __dirname + "/server-upload/.png";
+let beforePath, afterPath = __dirname + "/server-upload/";
 
 
 /**
@@ -70,7 +72,7 @@ const server = http.createServer( (request, response) => {
     form.keepExtensions = true;
     form.uploadDir = savePath;
 
-    form.on ('fileBegin', function(name, file){
+    form.on ('fileBegin', function(name, file) {
       file.path = form.uploadDir + "/" + file.name;
     })
 
@@ -79,15 +81,32 @@ const server = http.createServer( (request, response) => {
       let exten = splitter(check, ".");
 
       if (err) {
-        response.writeHead(404, {'content-type': 'text/text'});
+        response.writeHead(404, { 'content-type': 'text/text' });
         response.end("An error occured: " + err.message);
       } else if (exten !== ".png") {  //backend PNG check
-        response.writeHead(200, {'content-type': 'text/html'});
+        response.writeHead(200, { 'content-type': 'text/html' });
         response.end(formidResponseFileTypeHtmlString);
       } else {
         const uploadedPath = files.upload.path;
         const fileName = files.upload.name;
         console.log("File uploaded to: " + uploadedPath);
+
+        quickstart();
+        async function quickstart() {
+          // Imports the Google Cloud client library
+          const vision = require('@google-cloud/vision');
+
+          // Creates a client
+          const client = new vision.ImageAnnotatorClient({
+            keyFileName: keyPath
+          });
+
+          // Performs label detection on the image file
+          const [result] = await client.labelDetection(uploadedPath);
+          const labels = result.labelAnnotations;
+          console.log('Labels:');
+          labels.forEach(label => console.log(label.description));
+        }
 
         grayScale(savePath, fileName).then(msg => console.log(msg)).catch(err => console.log(err));
 
@@ -97,8 +116,8 @@ const server = http.createServer( (request, response) => {
     })
 
     form.on('end', function() {
-      readDir(savePath);
-    })
+      setTimeout( () => { readDir(savePath) }, 3000);
+    });
 
     const arr = fs.readdirSync(savePath);
 
@@ -128,40 +147,67 @@ const server = http.createServer( (request, response) => {
   }
 })
 
+server.listen(port, () => {
+  console.log(`Server running at http://${ hostName }:${ port }/`);
+});
+
 
 /**
  * Reads the directory where the file is uploaded
  * @param { String } path Location of where PNG file is uploaded
  */
 function readDir (path)  {
-  const arr = fs.readdirSync(path);
-  let grayImgFile = null;
-  let originalImgFile = null;
+  try {
+    const arr = fs.readdirSync(path);
 
-  if (arr.length === 0) {
-    return false
-  } else {
-    for(ele of arr) {
-      const extensionIndex = ele.lastIndexOf(".");
-      if (extensionIndex >= 0) {
-        extension = ele.slice(0, extensionIndex);
-        if (extension.includes("gray")) {
-          grayImgFile = extension;
-        } else {
-          originalImgFile = extension;
+    let grayImgFile = null;
+    let originalImgFile = null;
+
+    if (arr.length === 0) {
+      return false
+    } else {
+      for(ele of arr) {
+        const extensionIndex = ele.lastIndexOf(".");
+        if (extensionIndex >= 0) {
+          extension = ele.slice(0, extensionIndex);
+          if (extension.includes("gray-")) {
+            grayImgFile = extension;
+          } else {
+            originalImgFile = extension;
+          }
         }
       }
     }
+
+    beforePath = savePath + `/${ originalImgFile }.png`;
+    afterPath = savePath + `/${ grayImgFile }.png`;
+
+    setTimeout(() => {
+      console.log(beforePath)
+      console.log(afterPath), 5000});
+
+    setTimeout( () => { removeFile(savePath) }, 10000);
+
+  } catch (Error) {
+    console.log(Error.message);
   }
-
-  beforePath = savePath + `/${originalImgFile}.png`;
-  afterPath = savePath + `/${grayImgFile}.png`;
-
-  // setTimeout(fs.unlinkSync(beforePath), 10000);
-  // setTimeout(fs.unlinkSync(afterPath), 10000);
 }
 
-server.listen(port, () => {
-  console.log(`Server running at http://${hostName}:${port}/`);
-});
 
+/**
+ * Deletes files from server-uploade folder
+ * @param { String } path directory of folder to delete files from
+ */
+function removeFile (path) {
+  try{
+    const arr = fs.readdirSync(path)
+    for(file of arr) {
+      console.log(`Deleting: ${ savePath }/${ file }`);
+      fs.unlinkSync(path + `/${ file }`);
+    }
+  } catch (Error) {
+    console.log(Error.message);
+  }
+}
+
+module.exports = { server, readDir, removeFile }
