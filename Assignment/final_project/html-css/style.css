@@ -26,13 +26,21 @@ body {
   font-size: 2em;
   display: flex;
   justify-content: center;
+}.button-container {
+  display: flex;
+  justify-content: center;
 }
 
 .img-container {
+  margin: auto;
   display: flex;
   justify-content: center;
   flex-direction: row;
-}.image {
+}.image-before {
+  margin: 1%;
+  width: 40%;
+  height: auto;
+}.image-after {
   margin: 1%;
   width: 40%;
   height: auto;
@@ -78,9 +86,22 @@ body {
   display: flex;
   width: 100%;
   justify-content: center;
+  align-items: center;
   min-height: 10%;
   height: auto;
-}.analysis-text {
-  align-content: center;
+}.analysis {
+  display: flex;
+  justify-content: center;
   color: white;
+}.analysis-text {
+  color: white;
+  align-self: center;
+}.image-tag-container {
+  display: flex;
+  flex-direction: row;
+}.image-tag {
+  margin: auto;
+  color: white;
+  list-style-type: none;
+  margin: 0px 10px;
 }

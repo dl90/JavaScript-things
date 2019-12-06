@@ -5,6 +5,7 @@
 const http = require("http");
 const fs = require("fs");
 const formidable = require("formidable");
+const fetch = require("node-fetch");
 const grayScale = require("./html-css/modules/gray-scale").grayScale;
 const splitter = require("./html-css/modules/gray-scale").splitter;
 const formidResponseHtmlString = require("./html-css/modules/formid-res").htmlSuccess;
@@ -13,7 +14,6 @@ const formidResponseFileTypeHtmlString = require("./html-css/modules/formid-res-
 //server
 const hostName = "localhost";
 const port = 8080;
-const keyPath = "key.json";
 
 //html
 const indexHTMLRequest = "/";
@@ -35,6 +35,24 @@ const logoAsset = "./html-css/Assets/logo.png";
 const savePath = __dirname + "/server-upload";
 let beforePath, afterPath = __dirname + "/server-upload/";
 
+//image URL
+const beforeLink = "/bNXE0HIDrrmixWb6-before";
+const afterLink = "/oTIu5mmWd4f3Hb0z-after";
+
+//no image URL
+const noImage = "./html-css/Assets/image-not-found.png";
+
+//Google Vision API key path
+const apiKey = require("/Users/don/GitHub/Key/apiKey");
+const apiURL = `https://vision.googleapis.com/v1/images:annotate?key=${apiKey}`;
+// const keyPath = "key.json";
+
+//Google Vision API return tags
+const tags = [];
+const tagsURL = "/B0CRC9zlpfvWo55T-tags";
+
+//server-uploade file purge time
+const purgeTime = 15000;
 
 /**
  * @const server creates the http server
@@ -65,6 +83,44 @@ const server = http.createServer( (request, response) => {
     response.end( fs.readFileSync(logoAsset), "binary");
   }
 
+  setTimeout( () => { const arr = fs.readdirSync(savePath) 
+    if (arr.length > 0) {
+      if (request.url === beforeLink) {
+        setTimeout( () => {
+          response.writeHead(200, { 'Content-type' : 'image/png' });
+          response.end( fs.readFileSync(beforePath), "binary");
+        }, 800);
+      }
+
+      if (request.url === afterLink) {
+        setTimeout( () => {
+          response.writeHead(200, { 'Content-type' : 'image/png' });
+          response.end( fs.readFileSync(afterPath), "binary");
+        }, 800);
+      }
+
+    } else {
+      if (request.url === beforeLink) {
+        response.writeHead(200, { 'Content-type' : 'image/png' });
+        response.end( fs.readFileSync(noImage), "binary" );
+      }
+
+      if (request.url === afterLink) {
+        response.writeHead(200, { 'Content-type' : 'image/png' });
+        response.end( fs.readFileSync(noImage), "binary" );
+      }
+    }
+  }, 1000);
+
+  if (request.url === tagsURL) {
+    setTimeout( () => {
+      response.writeHead(200, { 'Content-type' : 'application/json'});
+      response.end(JSON.stringify(tags.sort()));
+    }, 500);
+    // tags.length = 0;
+  }
+
+
   //formidable
   if (request.url == '/upload' && request.method.toLowerCase() == 'post') {
     var form = new formidable.IncomingForm();
@@ -91,22 +147,25 @@ const server = http.createServer( (request, response) => {
         const fileName = files.upload.name;
         console.log("File uploaded to: " + uploadedPath);
 
-        quickstart();
-        async function quickstart() {
-          // Imports the Google Cloud client library
-          const vision = require('@google-cloud/vision');
 
-          // Creates a client
-          const client = new vision.ImageAnnotatorClient({
-            keyFileName: keyPath
-          });
+        // ***  Service account method  ***
 
-          // Performs label detection on the image file
-          const [result] = await client.labelDetection(uploadedPath);
-          const labels = result.labelAnnotations;
-          console.log('Labels:');
-          labels.forEach(label => console.log(label.description));
-        }
+        // quickstart();
+        // async function quickstart() {
+        //   // Imports the Google Cloud client library
+        //   const vision = require('@google-cloud/vision');
+
+        //   // Creates a client
+        //   const client = new vision.ImageAnnotatorClient({
+        //     keyFileName: keyPath
+        //   });
+
+        //   // Performs label detection on the image file
+        //   const [result] = await client.labelDetection(uploadedPath);
+        //   const labels = result.labelAnnotations;
+        //   console.log('Labels:');
+        //   labels.forEach(label => console.log(label.description));
+        // }
 
         grayScale(savePath, fileName).then(msg => console.log(msg)).catch(err => console.log(err));
 
@@ -118,31 +177,6 @@ const server = http.createServer( (request, response) => {
     form.on('end', function() {
       setTimeout( () => { readDir(savePath) }, 3000);
     });
-
-    const arr = fs.readdirSync(savePath);
-
-    if (arr.length > 0) {
-      if (request.url === "/bNXE0HIDrrmixWb6-before") {
-        response.writeHead(200, { 'Content-type' : 'image/png' });
-        response.end( fs.readFileSync(beforePath), "binary");
-      }
-    
-      if (request.url === "/oTIu5mmWd4f3Hb0z-after") {
-        response.writeHead(200, { 'Content-type' : 'image/png' });
-        response.end( fs.readFileSync(afterPath), "binary");
-      }
-    } else {
-      if (request.url === "/bNXE0HIDrrmixWb6-before") {
-        response.writeHead(200, { 'Content-type' : 'text/text' });
-        response.end("waiting for image");
-      }
-    
-      if (request.url === "/oTIu5mmWd4f3Hb0z-after") {
-        response.writeHead(200, { 'Content-type' : 'text/text' });
-        response.end("waiting for image");
-      }
-    }
-
     return;
   }
 })
@@ -169,11 +203,11 @@ function readDir (path)  {
       for(ele of arr) {
         const extensionIndex = ele.lastIndexOf(".");
         if (extensionIndex >= 0) {
-          extension = ele.slice(0, extensionIndex);
-          if (extension.includes("gray-")) {
-            grayImgFile = extension;
+          const filename = ele.slice(0, extensionIndex);
+          if (filename.includes("gray-")) {
+            grayImgFile = filename;
           } else {
-            originalImgFile = extension;
+            originalImgFile = filename;
           }
         }
       }
@@ -182,15 +216,66 @@ function readDir (path)  {
     beforePath = savePath + `/${ originalImgFile }.png`;
     afterPath = savePath + `/${ grayImgFile }.png`;
 
-    setTimeout(() => {
-      console.log(beforePath)
-      console.log(afterPath), 5000});
-
-    setTimeout( () => { removeFile(savePath) }, 10000);
+    //sends the file to google API
+    googleAPI(beforePath);
+    setTimeout( () => { removeFile(savePath) }, purgeTime);
 
   } catch (Error) {
     console.log(Error.message);
   }
+}
+
+/**
+ * Fetches the tags from Google Vision API
+ * @param { string } path url including the google api key
+ */
+function googleAPI (path) {
+
+  const imageFile = fs.readFileSync(path);
+
+  // Convert the image data to a Buffer and base64 encode it.
+  const encoded = Buffer.from(imageFile).toString('base64');
+  const fetchObj = {
+    "requests":[
+      {
+        "image":{
+          "content":encoded
+        },
+        "features":[
+          {
+            "type":"LABEL_DETECTION",
+            "maxResults":10
+          }
+        ]
+      }
+    ]
+  }
+
+  try {
+    fetch(apiURL, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json" },
+      body: JSON.stringify(fetchObj)
+    })
+    .then(res => res.json())
+    .then(json => getTags(json));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+/**
+ * Loops through the object and locate the tags from the Google Vision API
+ * @param { Object } obj Large object containting tags from Google Vision API
+ */
+function getTags (obj) {
+  for(obj of obj.responses) {
+    for(tagObj of obj.labelAnnotations) {
+      tags.push(tagObj.description)
+    }
+  }
+  return tags;
 }
 
 
@@ -210,4 +295,4 @@ function removeFile (path) {
   }
 }
 
-module.exports = { server, readDir, removeFile }
+module.exports = { server, readDir, removeFile, getTags }
