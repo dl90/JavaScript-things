@@ -218,6 +218,7 @@ function readDir (path)  {
 
     //sends the file to google API
     googleAPI(beforePath);
+
     setTimeout( () => { removeFile(savePath) }, purgeTime);
 
   } catch (Error) {

@@ -59,9 +59,10 @@ const persons = [
 // }
 // console.log(sum);
 
-// const sum = arr.reduce( (accumulator, currentvalue) => {
-//   //console.log(accumulator);
-//   //console.log(currentvalue);
-//   return  accumulator + currentvalue
-// } ,0) //can add starting value for accumulator as second param, 
-// console.log(sum);
+// #### reduce ####
+const sum = arr.reduce( (accumulator, currentvalue) => {
+  console.log(accumulator);
+  console.log(currentvalue);
+  return  accumulator + currentvalue
+} ,0) //can add starting value for accumulator as second param, 
+console.log(sum);
