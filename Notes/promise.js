@@ -1,13 +1,5 @@
 const fs = require("fs");
 
-// fs.rename("./text1.txt", "./text2.txt", (err) => {
-//     if (err) {
-//         console.log(err.message);
-//     } else {
-//         console.log("rename finished");
-//     }
-// });
-
 function renamePromises(originalPath, newPath) {
     return new Promise( (resolve, reject) => {
         fs.rename(originalPath, newPath, (err) => {

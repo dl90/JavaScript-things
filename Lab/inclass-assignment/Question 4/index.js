@@ -12,28 +12,29 @@
 //   4
 //   buzz
 
-//fizzBuzz(100);
+fizzBuzz(100);
 
 function fizzBuzz(n) {
+  const [fizz, buzz] = [3, 5];
   let returnStr = "";
 
-  for (let i = 1; i <= n; i ++) {
-    if ( i % 15 === 0) {
-      //returnStr += "fizzbuzz\n"; 
+  for (let i = 1; i <= n; i++) {
+    if (i % (fizz * buzz) === 0) {
+      returnStr += "fizzbuzz\n";
       console.log("fizzbuzz")
-    } else if( i % 3 === 0) {
-      //returnStr += "fizz\n";
+    } else if (i % fizz === 0) {
+      returnStr += "fizz\n";
       console.log("fizz");
-    } else if ( i % 5 === 0) {
-      //returnStr += "buzz\n";
+    } else if (i % buzz === 0) {
+      returnStr += "buzz\n";
       console.log("buzz")
     } else {
-      //returnStr += `${i}\n`;
+      returnStr += `${i}\n`;
       console.log(i);
     }
   }
-  //console.log(returnStr);
-  //return returnStr;
+
+  return returnStr;
 }
 
 module.exports = fizzBuzz;
