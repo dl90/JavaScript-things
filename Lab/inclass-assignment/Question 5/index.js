@@ -15,10 +15,10 @@ function palindrome(str) {
   const oddEven = (arr) => {
     let num = 0;
 
-    if ( (arr.length % 2) === 0) {
+    if ((arr.length % 2) === 0) {
       num = arr.length / 2;
     } else {
-      num = ( arr.length + 1 )/2;
+      num = (arr.length + 1) / 2;
     }
     return num
   }
@@ -28,26 +28,26 @@ function palindrome(str) {
   // console.log(strArr.length);
 
   let firstHalfStr = "";
-  for(let i = 0; i < arrLength; i++ ) {
+  for (let i = 0; i < arrLength; i++) {
     firstHalfStr += strArr[i];
   }
 
   let reduceCounter = 0;
-  if( (strArr.length / arrLength) === 2 ) {
+  if ((strArr.length / arrLength) === 2) {
     reduceCounter = arrLength;
   } else {
     reduceCounter = arrLength - 1;
   }
 
   let secondHalfStr = "";
-  for(let i = strArr.length - 1; i >= reduceCounter ; i-- ) {
+  for (let i = strArr.length - 1; i >= reduceCounter; i--) {
     secondHalfStr += strArr[i];
   }
 
   // console.log(firstHalfStr);
   // console.log(secondHalfStr);
 
-  if( firstHalfStr === secondHalfStr) {
+  if (firstHalfStr === secondHalfStr) {
     state = true;
   }
 
