@@ -26,7 +26,7 @@ function filterNames (arrName) {
 }
 
 function getNumberOfEvens (numArr) {
-    let evenNum = o;
+    let evenNum = 0;
 
     for (let i = 0; i < numArr.length; i ++) {
         if (Number(arr[i]) && (arr[i] % 2 == o)) {
