@@ -25,25 +25,25 @@ let myCallback = (err, result) => {
     if (err) {
         console.log(err.message);
     } else {
-    console.log(result);
+        console.log(result);
     }
 };
 
 let multipler = (num1, num2, myCallback) => {
     setTimeout(() => {
         let result = parseInt(num1) * parseInt(num2);
-        myCallback(null,result);
+        myCallback(null, result);
     }, 4000);
 
-    if(parseFloat(num1).toString().includes(".")) {
+    if (parseFloat(num1).toString().includes(".")) {
         num1 = Math.round(num1);
     }
 
-    if(parseFloat(num2).toString().includes(".")) {
+    if (parseFloat(num2).toString().includes(".")) {
         num2 = Math.round(num2);
     }
 
-    if(!Number.isInteger(num1) || !Number.isInteger(num2)) {
+    if (!Number.isInteger(num1) || !Number.isInteger(num2)) {
         myCallback(new Error("Not an int"), null);
     } else {
         result = num1 * num2;
@@ -52,6 +52,6 @@ let multipler = (num1, num2, myCallback) => {
 }
 
 multipler(1, 5, myCallback);
-setTimeout (() => {
+setTimeout(() => {
     multipler(1, 10, myCallback)
 }, 1000);

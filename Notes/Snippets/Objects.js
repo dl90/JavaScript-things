@@ -6,8 +6,8 @@
 let facebookProfile = {
     name: "Don",
     friends: 0,
-    messages: ["abc","def","ghi","dont use facebook"],
-    
+    messages: ["abc", "def", "ghi", "dont use facebook"],
+
     addPost: function postMessage(message) {
         message = String(message);
         facebookProfile.messages.push(message);
@@ -17,7 +17,7 @@ let facebookProfile = {
             facebookProfile.messages.pop(index);
         } else {
             console.error("Nice try, doesnt exist.");
-        }   
+        }
     },
     addFriend: function addFriend() {
         while (this.friends === 0) {
@@ -30,7 +30,7 @@ let facebookProfile = {
         } else {
             console.log("You have no friends to remove...");
         }
-        
+
     }
 
 };

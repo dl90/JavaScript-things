@@ -30,9 +30,9 @@ function isEven(num) {
 
 const countBs = (str) => {
   let index = 0;
-  if(str.length > 0) {
-    for(let i = 0; i < str.length; i++) {
-      if(str[i] === "B") {
+  if (str.length > 0) {
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] === "B") {
         index++;
       }
     }
@@ -42,9 +42,9 @@ const countBs = (str) => {
 
 const countChar = (str, letter) => {
   let index = 0;
-  if( str.length > 0 && letter !== null) {
-    for(let i = 0; i < str.length; i++) {
-      if(str[i] === letter) {
+  if (str.length > 0 && letter !== null) {
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] === letter) {
         index++;
       }
     }
@@ -54,3 +54,62 @@ const countChar = (str, letter) => {
 
 // console.log(countBs("BBC"));
 // console.log(countChar("kakkerlak", "k"));
+
+const range = (start, end, step = 1) => { // default for third arg is 1
+  let arr = [];
+  if (end > start && step > 0) {
+    for (let i = start; i <= end; i += step) {
+      arr.push(i);
+    }
+  } else if (start > end && step < 0)
+    for (let i = start; i >= end; i += step) {
+      arr.push(i);
+    }
+
+  return arr;
+}
+
+const sum = (arr) => {
+  let accumulator = 0;
+  for (ele of arr) {
+    accumulator += ele;
+  }
+  return accumulator;
+}
+
+// console.log(sum(range(10, 2, -2)));
+
+const reverseArr = (arr) => {
+  const revArr = [];
+  for (let i = arr.length - 1; i >= 0; i--) {
+    revArr.push(arr[i]);
+  }
+  return revArr;
+}
+
+const reverseArrInPlace = (arr) => {
+  for (let i = 0; i < Math.floor(arr.length / 2); i++) {
+    let temp = arr[i];
+    arr[i] = arr[arr.length - 1 - i];
+    arr[arr.length - 1 - i] = (temp);
+  }
+  return arr
+}
+
+// console.log(reverseArr(["A", "B", "C"]));
+// console.log(reverseArrInPlace(["A", "B", "C", "D", "E"]));
+
+
+const arrayToList = (arr) => {
+  let list = {};
+  for (let i = arr.length - 1; i >= 0; i--) {
+    list = { "value": arr[i], "rest": list };
+  }
+  return list;
+}
+
+console.log(arrayToList([1, 2, 3, 4]));
+
+const listToArray = (list) => {
+
+}

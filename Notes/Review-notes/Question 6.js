@@ -19,7 +19,7 @@ console.log(b);
 // guessGame(8);
 
 //one way of running it
-function guessGame (arg) {
+function guessGame(arg) {
   const randNum = arg
   let guess;
   let text = "Guess a num:"
@@ -29,13 +29,13 @@ function guessGame (arg) {
   do {
     guess = readline.question(text);
 
-    if(guess > randNum) {
+    if (guess > randNum) {
       ({ text, tries } = highOrLowCheck(previousGuess, guess, text, tries, "high"));
     } else if (guess < randNum) {
       ({ text, tries } = highOrLowCheck(previousGuess, guess, text, tries, "low"));
     }
     previousGuess = guess
-  } while( guess != randNum);
+  } while (guess != randNum);
 
   console.log("got it");
   console.log(`took you ${tries + 1}`);
@@ -43,7 +43,7 @@ function guessGame (arg) {
 
 function highOrLowCheck(prevGuess, guess, text, tries, highOrLow) {
 
-  if( prevGuess === guess ) {
+  if (prevGuess === guess) {
     text = `you guessed that already, its too ${highOrLow} try again `
   } else {
     text = `you guessed too ${highOrLow} try again `

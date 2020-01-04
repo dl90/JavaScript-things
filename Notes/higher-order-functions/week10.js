@@ -1,4 +1,4 @@
-const arr = [1,2,3,4,5,6,7,8,9,10];
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 // const arr2 = []
 // for(let i = 0; i < arr.length; i++) {
@@ -36,7 +36,7 @@ const persons = [
   { name: 'Mark', age: 18 },
   { name: 'John', age: 27 },
   { name: 'Jane', age: 14 },
-  { name: 'Tony', age: 24},
+  { name: 'Tony', age: 24 },
 ];
 // const old = [];
 // for(pers of persons) {
@@ -60,9 +60,9 @@ const persons = [
 // console.log(sum);
 
 // #### reduce ####
-const sum = arr.reduce( (accumulator, currentvalue) => {
+const sum = arr.reduce((accumulator, currentvalue) => {
   console.log(accumulator);
   console.log(currentvalue);
-  return  accumulator + currentvalue
-} ,0) //can add starting value for accumulator as second param, 
+  return accumulator + currentvalue
+}, 0) //can add starting value for accumulator as second param, 
 console.log(sum);

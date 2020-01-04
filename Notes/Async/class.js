@@ -1,25 +1,25 @@
 const referenceOne = add;
-referenceOne(3,7);
+referenceOne(3, 7);
 
 const referenceTwo = add;
-referenceOne(3,6);
+referenceOne(3, 6);
 
-function add (num1, num2) {
-    return num1 + num2; 
+function add(num1, num2) {
+    return num1 + num2;
 }
 
 //adding a reference of a function on the second parameter.
 //no diffeente to referenceOne or referenceTwo.
 //addTwo is a higher order function, addRefernce is a callback function.
-function addTwo (num1, addReference) {
+function addTwo(num1, addReference) {
     //2 is hardcoded
-    return addReference( num1, 2);
+    return addReference(num1, 2);
 }
 
 addTwo(7, add);
 
 //***Function declaration syntax (explicitly using the function keyworkd, naming it ...)
-function callback (itemInList, index, array) {
+function callback(itemInList, index, array) {
     console.log(itemInList + " is at position: " + index);
 
     //new way of concat string  ***(string interperlation syntax)
@@ -46,16 +46,16 @@ let callback3 = (itemInList, index, array) => console.log();
 
 //for each item in array, callback function is run.
 //order matters in forEach.
-[1,2,3].forEach(callback)
+[1, 2, 3].forEach(callback)
 
 myForEach = (arr, callBackFunction) => {
-    for(i = 0; i< arr.length; i++) {
+    for (i = 0; i < arr.length; i++) {
         let item = callBackFunction(arr[i]);
         callBackFunction(item);
     }
 };
 
-myForEach([1,2,3], function(item) {
+myForEach([1, 2, 3], function (item) {
     console.log(item);
 })
 
@@ -83,8 +83,8 @@ const someCallBackFunctoin = () => {
 
 //wirting to a file
 const fs = require("fs");
-fs.writeFile("abc.txt","some data", function (err) {
-    if(err) {
+fs.writeFile("abc.txt", "some data", function (err) {
+    if (err) {
         console.err(err);
     }
     //anything past this point means file is written sucessfully
@@ -92,6 +92,6 @@ fs.writeFile("abc.txt","some data", function (err) {
 });
 
 //readfile gives back binary
-fs.readFile("abc.txt", function(err, data) {
+fs.readFile("abc.txt", function (err, data) {
 
 });

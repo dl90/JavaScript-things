@@ -1,11 +1,11 @@
 const fs = require("fs");
 
 const getEven = function (fileName) {
-  return new Promise ( (resolve, reject) => {
-    if (typeof(fileName) !== 'string') {
-      reject(new Error ("wrong type of fileName, must be string"));
+  return new Promise((resolve, reject) => {
+    if (typeof (fileName) !== 'string') {
+      reject(new Error("wrong type of fileName, must be string"));
     } else {
-      fs.readFile(fileName, 'utf-8', (err,data) => {
+      fs.readFile(fileName, 'utf-8', (err, data) => {
         if (err) {
           reject(err.message);
         } else {
@@ -19,13 +19,13 @@ const getEven = function (fileName) {
 }
 
 getEven("num.txt")
-.then( arr => {
-  let b = arr.filter(x => x%2 === 0)
-  console.log(b);
-} )
-.catch( msg => console.log(msg));
+  .then(arr => {
+    let b = arr.filter(x => x % 2 === 0)
+    console.log(b);
+  })
+  .catch(msg => console.log(msg));
 
-function parseNum (str) {
+function parseNum(str) {
   //let numArr = [];
   //array of each line of file
   let arr = str.split('\n');

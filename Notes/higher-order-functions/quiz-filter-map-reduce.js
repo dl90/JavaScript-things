@@ -1,13 +1,13 @@
-const people = [ { name: 'John',  age: 16},
-                 { name: 'Joe',   age: 19},
-                 { name: 'Jane',  age: 20},
-                 { name: 'James', age: 18} ];
+const people = [{ name: 'John', age: 16 },
+{ name: 'Joe', age: 19 },
+{ name: 'Jane', age: 20 },
+{ name: 'James', age: 18 }];
 
 const coffeeLovers = ['John', 'Joe', 'Jane'];
 
 let totaleAgeAbove18 = 0;
 
-const ageAbove18 = people.filter( (person) => person.age >= 18);
+const ageAbove18 = people.filter((person) => person.age >= 18);
 console.log(ageAbove18);
 console.log();
 
@@ -17,15 +17,15 @@ const coffeeLoverProperty = (person) => {
 };
 
 //people.forEach(person => coffeeLoverProperty(person));
-ageAbove18.map( person => coffeeLoverProperty(person))
+ageAbove18.map(person => coffeeLoverProperty(person))
 
 console.log(people);
 console.log();
 
 
-const ageReducer = ageAbove18.reduce( (accumulator, currentValue) => {
+const ageReducer = ageAbove18.reduce((accumulator, currentValue) => {
   console.log(currentValue);
-  if(currentValue.coffeelover === true) {
+  if (currentValue.coffeelover === true) {
     totaleAgeAbove18 = accumulator + currentValue.age;
   }
   return totaleAgeAbove18;
@@ -58,7 +58,7 @@ console.log(totaleAgeAbove18);
 // const coffeeLoversAbove18 = people .filter(ageAbove18) .map(addCoffeeLoverProperty);
 
 // const totalAgeOfCoffeeLoversAbove18 = coffeeLoversAbove18 .reduce(ageReducer, 0);
- 
+
 // console.log(totalAgeOfCoffeeLoversAbove18);
 
 

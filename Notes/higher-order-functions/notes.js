@@ -5,7 +5,7 @@ const double = (x) => x * 2;
 const result1 = double(input);
 
 const getClearance = (allowed) => (allowed ? 'Access granted' : 'Access denied');
-if(result1 > 5) {
+if (result1 > 5) {
   result2 = getClearance(true);
 } else {
   result2 = getClearance(false);

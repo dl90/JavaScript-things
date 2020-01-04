@@ -12,16 +12,16 @@ const persons = [
     { name: "Tony", age: 24 }
 ];
 
-let filteredArr = persons.filter( (obj) => obj.age > 18);
-let filteredLetterArr = persons.filter( (obj) => obj.name.indexOf("J") != -1);
+let filteredArr = persons.filter((obj) => obj.age > 18);
+let filteredLetterArr = persons.filter((obj) => obj.name.indexOf("J") != -1);
 console.log(filteredArr);
 
 
 //*****reduce*****
 const arr2 = [5, 7, 1, 8, 2];
 
-const sum = arr2.reduce( (accumulator, currentValue) => {
-    console.log("accumulator: " +accumulator);
+const sum = arr2.reduce((accumulator, currentValue) => {
+    console.log("accumulator: " + accumulator);
     console.log(currentValue + "!");
     return accumulator + currentValue;
 }); //default value }, 1)

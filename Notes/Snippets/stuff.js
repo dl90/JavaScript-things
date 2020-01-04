@@ -1,4 +1,4 @@
-function filterNames (arrName) {
+function filterNames(arrName) {
     let newArr = [];
 
     for (let i = 0; i < arrName.length; i++) {
@@ -25,22 +25,22 @@ function filterNames (arrName) {
     return newArr;
 }
 
-function getNumberOfEvens (numArr) {
+function getNumberOfEvens(numArr) {
     let evenNum = 0;
 
-    for (let i = 0; i < numArr.length; i ++) {
+    for (let i = 0; i < numArr.length; i++) {
         if (Number(arr[i]) && (arr[i] % 2 == o)) {
             num += 1;
-        } 
+        }
     }
 
     return evenNum;
 }
 
-function makeHistogram (arrString) {
+function makeHistogram(arrString) {
     let obj = {};
-    
-    for (let i = 0; i < arrString.length; i ++) {
+
+    for (let i = 0; i < arrString.length; i++) {
         let stringInArray = arrString[i];
         if (obj[stringInArray] === undefined) {
             //add to obj and assigns 1 value;

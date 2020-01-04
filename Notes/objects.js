@@ -29,8 +29,14 @@ for (value in account) { // returns the key
 }
 
 const copyAccount = {};
+// assigns account properties to copy account (copies its properties)
 Object.assign(copyAccount, account);
 Object.assign(copyAccount, { 3: 123, 4: 321 });
 
 console.log(account);
 console.log(copyAccount);
+
+// create objects with bindings
+const [abc, bcd] = ["short", "hand"];
+const shortHand = { abc, bcd };
+console.log(shortHand)

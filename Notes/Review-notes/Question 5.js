@@ -1,16 +1,16 @@
 let dishes = [
-  {"dishName": "vegetable curry", "cookTime": "15 minutes", "veganFriendly": "yes"},
-  {"dishName": "steak", "cookTime": "9 minutes", "veganFriendly": "no"},
-  {"dishName": "tofu soup", "cookTime": "12 minutes", "veganFriendly": "yes"}
-  ]
+  { "dishName": "vegetable curry", "cookTime": "15 minutes", "veganFriendly": "yes" },
+  { "dishName": "steak", "cookTime": "9 minutes", "veganFriendly": "no" },
+  { "dishName": "tofu soup", "cookTime": "12 minutes", "veganFriendly": "yes" }
+]
 
 
 const search = (key, array) => {
   arr = []
 
-  for(obj of array) {
+  for (obj of array) {
     cookingInfo.msg.push(obj.dishName)
-    if(obj.veganFriendly === key) {
+    if (obj.veganFriendly === key) {
       arr.push(obj.dishName)
     }
   }
@@ -45,7 +45,7 @@ const turnOnStove = (food, callback) => {
   //   const cookingInfo = {};
   //   cookingInfo.msg = []
   //   cookingInfo.veganFriendlyDishes = []
-  
+
   //   function secondsToCook (dishName) {
   //     for(obj of dishes) {
   //       if (obj.dishName === dishName) {
@@ -55,7 +55,7 @@ const turnOnStove = (food, callback) => {
   //       }
   //     }
   //   }
-  
+
   //   for(obj of dishes) {
   //     cookingInfo.msg.push(obj.dishName)
   //     if(obj.veganFriendly == "yes") {
@@ -64,7 +64,7 @@ const turnOnStove = (food, callback) => {
   //   }
   //   return cookingInfo;
   // }
-  
+
   // console.log(cookingInfo(dishes).msg);
   // console.log(cookingInfo(dishes).veganFriendlyDishes);
   // console.log(cookingInfo(dishes).secondsToCook("vegetable curry"));
