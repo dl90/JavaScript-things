@@ -110,6 +110,6 @@ const arrayToList = (arr) => {
 
 console.log(arrayToList([1, 2, 3, 4]));
 
-const listToArray = (list) => {
+// const listToArray = (list) => {
 
-}
+// }
