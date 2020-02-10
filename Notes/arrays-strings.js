@@ -47,3 +47,16 @@ let v = s.padStart(10, '*'); // string '****Hello!'
 // Pad with leading zeroes
 (12).toString(2).padStart(8, '0'); // string '00001100'
 console.log(t);
+
+// for in
+a = [10, 20, 30];
+for (let i in a) {
+  console.log(i);
+  console.log(a[i]);
+}
+
+b = { 'x': 77, 'y': 88, 'z': 99 };
+for (let i in b) {
+  console.log(i);
+  console.log(b[i]);
+}
