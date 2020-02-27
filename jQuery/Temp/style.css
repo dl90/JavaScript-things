@@ -1,0 +1,11 @@
+body {
+  background-color: black;
+  color: white
+}
+
+input {
+  margin-bottom: 10px;
+  width: 100px;
+}.error {
+  border: 2px solid red;  
+}

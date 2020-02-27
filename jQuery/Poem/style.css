@@ -1,0 +1,13 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+p {
+  margin: 3pt;
+}
+
+button {
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
