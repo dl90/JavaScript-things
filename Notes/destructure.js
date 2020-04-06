@@ -13,7 +13,6 @@ function hotSwapArr(arr) {
 
 objDestructure({ a: 1, b: 2, c: 3 });
 function objDestructure(obj) {
-  // keys must be same
   const { c, b, a } = obj;
 
   console.log(a);
