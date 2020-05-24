@@ -4,7 +4,7 @@
  */
 
 
-//If the second argument is not givent, it defaults to 2.
+//If the second argument is not given, it defaults to 2.
 function power(base, exponent = 2) { 
   let result = 1;
   for (let count = 0; count < exponent; count++) {

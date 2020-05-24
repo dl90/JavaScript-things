@@ -10,14 +10,14 @@ function getUserInput() {
   // console.log(input);
   // console.log(typeof(input));
   makeDir()
-  .then(msg => console.log(msg),
-    writeUserInputToFile(input).then(msg => console.log(msg)))
-  .catch(err => console.log(err));
-  
+    .then(msg => console.log(msg),
+      writeUserInputToFile(input).then(msg => console.log(msg)))
+    .catch(err => console.log(err));
+
 }
 
-function makeDir () {
-  return new Promise ( (resolve, reject) => {
+function makeDir() {
+  return new Promise((resolve, reject) => {
     fs.mkdir(__dirname + `/${dataPoints}`, (err) => {
       if (err) {
         reject(err.message);
@@ -28,8 +28,8 @@ function makeDir () {
   })
 }
 
-function writeUserInputToFile (str) {
-  return new Promise ( (resolve, reject) => {
+function writeUserInputToFile(str) {
+  return new Promise((resolve, reject) => {
     fs.writeFile(__dirname + `/${dataPoints}/points.txt`, str, (err) => {
       if (err) {
         reject(err.message);
