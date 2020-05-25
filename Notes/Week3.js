@@ -161,20 +161,20 @@ and then show an example of using a ternary operator and having the result assig
 Then print out the result of the variable. 
  */
 
- /* 
+/* 
 Ternary operators work with 3 "parameters"
 (a boolean expresstion)? result if true: result if false
- */
+*/
 
- /*
- var input = "Monday";
- let coffee = null;
+/*
+var input = "Monday";
+let coffee = null;
 
 
- //input = "Tuesday";
- let example = (input === "Monday")? coffee = "Yes": coffee = "Maybe not";
- console.log(example);
- //console.log(coffee);
+//input = "Tuesday";
+let example = (input === "Monday")? coffee = "Yes": coffee = "Maybe not";
+console.log(example);
+//console.log(coffee);
 */
 
 // let arr = [1,2,3,4,5,6,7,8,9];
@@ -206,7 +206,7 @@ console.log(str.concat("More stuff added"));
 
 */
 
-var testArr =  [45,22,2222,11111,33,200,300];
+var testArr = [45, 22, 2222, 11111, 33, 200, 300];
 
 //sorts by ascii order
 //mutates the array
@@ -222,11 +222,11 @@ console.log(testArr.push(2019));
 
 //cuts a segment from the array (strating postion , ending position)
 //does not mutate the array, unless assigned
-console.log(testArr.slice(2,6));
+console.log(testArr.slice(2, 6));
 
 console.log(testArr);
 
 
 const fs = require("fs");
 
-fs.writeFileSync("log.txt",Logs)
+fs.writeFileSync("log.txt", Logs)

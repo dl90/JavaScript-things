@@ -60,3 +60,7 @@ for (let i in b) {
   console.log(i);
   console.log(b[i]);
 }
+
+// regex
+const pattern = /\d+/;
+const regex = new RegExp('\\d+');
