@@ -1,10 +1,14 @@
 /**
  * @author Don (dl90)
- * @note functions review
+ * @note Functions review
  */
 
 /* All functions in JavaScript are objects => reference types */
 /* Primitive types | Reference types (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures) */
+/* primitives = immutable */
+
+// let func = new Function(['console.log(123 - 3)', 'console.log("b")', 'console.log("c")']);
+// func()
 
 /* declarative (hoists) */
 function name(param) { console.log(param) };

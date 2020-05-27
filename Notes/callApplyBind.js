@@ -1,3 +1,7 @@
+/**
+ * @author Don (dl90)
+ * @note Functions review: call apply bind
+ */
 
 let printWhich;
 // printWhich = 'call';
@@ -88,7 +92,7 @@ printWhich === 'bind' ? (() => {
   /* bound references remains */
   console.log('objRef1: ', objRef1);
   objRef2.foreignKey = bindRef1;;
-  objRef2.foreignKey('changing objRef1 _name by calling objRef2 property, changeName function function thats bound to objRef1');
+  objRef2.foreignKey('changing objRef1 _name by calling objRef2 property (changeName function thats bound to objRef1)');
   delete objRef2.foreignKey;
   console.log('objRef1: ', objRef1);
   console.log('objRef2: ', objRef2);
