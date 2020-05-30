@@ -44,7 +44,6 @@ const objRef2 = {
 
 /* Call */
 /* Note: when no reference is passed to call, it uses the enclosing scope (global/parent) */
-/* Note2: not sure if this apply to functions with args */
 printWhich === 'call' ? printIdName.call(objRef1) : null
 function fakeGlobal() {
   this._id = 99999;

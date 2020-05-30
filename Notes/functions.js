@@ -34,7 +34,7 @@ function power(base, exponent = 2) {
 /* In cases of functions with the same namespace, The most recently defined function will be used */
 function extraArgs(arg) {
   console.log(...arguments) // all arguments passed to function
-  console.log(extraArgs.length) // Number of named arguments
+  console.log(extraArgs.length) // Number of named arguments (arguments in parentheses)
   return "Yes";
 };
 // extraArgs(1, 2, 3, 4, 5, "No", true, false, null);

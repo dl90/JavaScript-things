@@ -124,7 +124,7 @@ const setOnly = {
 
 
 
-/* --- property attributes --- */
+/* --- property attributes (encapsulation) --- */
 /* By default assigned properties are enumerable and configurable */
 const testCase = { "_id": 1 };
 
@@ -189,7 +189,7 @@ const testCase3 = {
 Object.defineProperty(testCase3, "code",
   {
     enumerable: true, // false ? hides get and set property
-    configurable: false, // false ? can not change with defineProperty or delete property
+    configurable: false, // false ? can't change (redefine) property attributes with defineProperty once initialized, can't delete property
 
     // accessor and mutator only attributes
     get: function () { return this._code }, // remove ? set only (can still set with explicit property key)
@@ -293,6 +293,7 @@ const objAttr2Descriptor = Object.getOwnPropertyDescriptor(objAttr2, "name")
 
 
 /* freeze => object is sealed && ALL properties are non writable (readonly) */
+/* Note: throws error when change attempted with 'strict mode'; */
 const objAttr3 = { "name": "James" }
 // console.log(Object.isExtensible(objAttr3), Object.isSealed(objAttr3), Object.isFrozen(objAttr3));
 Object.freeze(objAttr3);

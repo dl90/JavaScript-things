@@ -2,21 +2,21 @@
 node.js used for real-time event driven systems
 node.js has async non blocking io
 
-other languages may stop to resond to requests
-other languages use multi-threading to to process more incomming requests
+other languages may stop to respond to requests
+other languages use multi-threading to to process more incoming requests
 it has more overhead
-writing multi-threading code is extremly difficult and bug inducing
+writing multi-threading code is extremely difficult and bug inducing
 
 I/O takes time, cpu waits, we block operations while io loads
 blocked code (cpu cant execute any code until file is loaded (I/O))
 
-node uses a c++ library livUV to allow to run I/O in a seperate process
+node uses a c++ library livUV to allow to run I/O in a separate process
 so code following I/O will not be blocked
 
 JavaScript is event driven at its core
 "at some point in the future, when this click happens, this function is called"
 
-node is incredablely fast when handing high concurency requests
+node is incredible fast when handing high concurrency requests
 */
 
 /*
@@ -39,7 +39,7 @@ let arr = [1,2,3,4,5];
 
 /*
 same as:
-annonmous function (function has no name)
+anonymous function (function has no name)
 a name gives a function a reference
 let mylooper = function(ele) {
     console.log(ele);
@@ -54,12 +54,12 @@ function looper (ele) {
 arr.forEach(looper);
 
 /*
-different variation with annonmous function
+different variation with anonymous function
 arr.forEach (function (ele) {
     console.log(ele);
 })
 */
 
 const fs = require("fs");
-//dont use**    let file = fs.readFileSync(file); it will block your code until file is read
+//don't use**    let file = fs.readFileSync(file); it will block your code until file is read
 //use**         readFile(file, function(contents) { console.log(contents ); })
