@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const Sentry = require('@sentry/node');
 
-Sentry.init({ dsn: 'https://d4cfa055f4ad4a489d096530dfc14b15@sentry.io/2130725' });
+Sentry.init({ dsn: 'https://***@sentry.io/***' });
 
 // The request handler must be the first middleware on the app
 app.use(Sentry.Handlers.requestHandler());

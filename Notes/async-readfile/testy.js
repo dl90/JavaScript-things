@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { resolve } = require("path");
 
 const getEven = function (fileName) {
   return new Promise((resolve, reject) => {
@@ -9,9 +10,7 @@ const getEven = function (fileName) {
         if (err) {
           reject(err.message);
         } else {
-          //console.log(data);
-          let arr = parseNum(data);
-          resolve(arr);
+          resolve(data.split('\n'));
         }
       })
     }
@@ -25,28 +24,7 @@ getEven("num.txt")
   })
   .catch(msg => console.log(msg));
 
-function parseNum(str) {
-  //let numArr = [];
-  //array of each line of file
-  let arr = str.split('\n');
-  //console.log(arr);
 
-
-  // for(ele of arr) {
-  //   //console.log(ele);
-  //   let a = ele.split('');
-  //   numArr.push( a );
-  //   //console.log(numArr);
-  // }
-
-  // //numArr is a 2D array
-  // //console.log(numArr);
-  // let anotherArr = []
-  // for(elem of numArr) {
-  //   //console.log(elem);
-  //   for(ele of elem) {
-  //   anotherArr.push(elem);
-  //   }
-  //console.log(anotherArr);
-  return arr
-}
+fs.stat("num.txt", (err, data) => {
+  err ? console.log(error) : console.log(data);
+})

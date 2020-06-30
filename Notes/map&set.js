@@ -1,3 +1,17 @@
+/*
+  unique key and value
+  key and value in Map can be in any data type
+  no keys when created (unlike objects => Object.prototype)
+  order is preserved
+  iterable
+
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
+
+  performs better than object:
+    intensive set() and get() ops
+    large set of data, especially when keys are unknown until run time
+    keys are the same type and values are the same type
+*/
 const ref = new Map([[1, 0], [true, 2]]);
 ref.set("key1", "val1");
 ref.set("key2", 2);
@@ -15,7 +29,20 @@ for (let [k, v] of ref.entries()) {
 
 ref.clear();
 
+var uniqueOccurrences = function (arr) {
+  const cache = new Map();
 
+  for (const ele of arr) cache.has(ele) ? cache.set(ele, cache.get(ele) + 1) : cache.set(ele, 1);
+  const val = Array.from(cache.values());
+  const set = new Set(val);
+  return set.size == cache.size;
+};
+
+console.log(uniqueOccurrences([-3, 0, 1, -3, 1, 1, 1, -3, 10, 0]))
+console.log(uniqueOccurrences([4, 0, 2, -5, -4]))
+
+
+/* */
 const setRef = new Set([7, 11]).add(2)
 console.log(setRef, setRef.size, setRef.has(3))
 
