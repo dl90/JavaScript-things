@@ -7,11 +7,15 @@
 
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
 
-  performs better than object:
+  performs better than object (depending on engine):
     intensive set() and get() ops
     large set of data, especially when keys are unknown until run time
     keys are the same type and values are the same type
+
+  https://stackoverflow.com/questions/18541940/map-vs-object-in-javascript#:~:text=A%20Map%20is%20ordered%20and,A%20Map%20inherits%20from%20Map.
 */
+
+/* MAP */
 const ref = new Map([[1, 0], [true, 2]]);
 ref.set("key1", "val1");
 ref.set("key2", 2);
@@ -42,7 +46,7 @@ console.log(uniqueOccurrences([-3, 0, 1, -3, 1, 1, 1, -3, 10, 0]))
 console.log(uniqueOccurrences([4, 0, 2, -5, -4]))
 
 
-/* */
+/* SET */
 const setRef = new Set([7, 11]).add(2)
 console.log(setRef, setRef.size, setRef.has(3))
 

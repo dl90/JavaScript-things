@@ -19,8 +19,10 @@ const func = () => { console.log(1) }
 // console.log(arr instanceof Array)
 // console.log(func instanceof Function)
 
-/* Note all other reference types are derived from the object type in JS */
-/* This means that using instanceOf Object will pretty much always return true for all reference type data */
+/* 
+  Note all other reference types are derived from the object type in JS 
+  This means that using instanceOf Object will pretty much always return true for all reference type data 
+*/
 
 // console.log(arr instanceof Object)
 // console.log(func instanceof Object)
@@ -45,7 +47,7 @@ let x = test
 test = null;
 // console.log(test, x.x) // x still points to obj in memory
 
-/* all references to obj in memory are removed => memory will be freed by Js engine */
+/* all references to obj in memory are removed => memory will be freed by JS engine */
 // x = null;
 // console.log(x) 
 
@@ -58,8 +60,11 @@ const account = {
   2: 4000,
   "account holds": "None to be specified"
 }
-/* Note: the in operator lists all enumerable properties but does not differentiate between inherited and assigned */
-/* To check if property is owned by the object (assigned?) instead of inherited */
+/* 
+  Note: the in operator lists all enumerable properties but does not differentiate between inherited and assigned
+  To check if property is owned by the object (assigned?) instead of inherited
+  use obj.hasOwnProperty("property_name")
+*/
 // console.log(account.hasOwnProperty("account_number"));
 
 /* To check if property is enumerable (non enumerable properties are built in / internal (in built objects) properties) */
@@ -71,11 +76,12 @@ const account = {
 
 
 /*
-The difference between setting a property to undefined and actually deleting it is:
-  setting undefined, the object still has the property (it just doesn’t have a very interesting value)
-  deleting the property => no longer present and "in" will not include it.
+  The difference between setting a property to undefined and actually deleting it is:
+    setting undefined, the object still has the property (it just doesn’t have a very interesting value)
+    deleting the property => no longer present and "in" will not include it.
+
+  Note: the delete statement also returns a boolean indication success && possibility of deleting property
 */
-/* Note: the delete statement also returns a boolean indication success && possibility of deleting property */
 account.account_number = undefined;
 // console.log(Object.keys(account));
 // console.log("\t" + ("account_number" in account)); // in for string and objects
