@@ -19,9 +19,9 @@ const func = () => { console.log(1) }
 // console.log(arr instanceof Array)
 // console.log(func instanceof Function)
 
-/* 
-  Note all other reference types are derived from the object type in JS 
-  This means that using instanceOf Object will pretty much always return true for all reference type data 
+/*
+  Note all other reference types are derived from the object type in JS
+  This means that using instanceOf Object will pretty much always return true for all reference type data
 */
 
 // console.log(arr instanceof Object)
@@ -42,14 +42,13 @@ let x = test
 // console.log(test === x, x.x)
 
 
-
 /* garbage collect */
 test = null;
 // console.log(test, x.x) // x still points to obj in memory
 
 /* all references to obj in memory are removed => memory will be freed by JS engine */
 // x = null;
-// console.log(x) 
+// console.log(x)
 
 /* Wrapper types object representing primitive types */
 // Number String Boolean
@@ -60,7 +59,7 @@ const account = {
   2: 4000,
   "account holds": "None to be specified"
 }
-/* 
+/*
   Note: the in operator lists all enumerable properties but does not differentiate between inherited and assigned
   To check if property is owned by the object (assigned?) instead of inherited
   use obj.hasOwnProperty("property_name")

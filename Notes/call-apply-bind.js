@@ -1,8 +1,3 @@
-/**
- * @author Don (dl90)
- * @note Functions review: call apply bind
- */
-
 let printWhich;
 // printWhich = 'call';
 // printWhich = 'apply';
@@ -73,12 +68,14 @@ printWhich === 'apply' ? (() => {
   console.log(objRef1);
 })() : null;
 
-
-/* Bind */
-/* dynamically binds reference to method/function and returns a function */
+/*
+  Bind
+  dynamically binds reference and arguments to method/function and returns a pointer to the function to execute
+*/
 printWhich === 'bind' ? (() => {
   const bindRef1 = changeName.bind(objRef1);
-  const bindRef2 = changeName.bind(objRef2, 'New Name', 'test'); // args can be passed as the second param of .bind or when calling the reference
+  // args can be passed as the second param of .bind or when calling the reference. Default param is the last param (ie event)
+  const bindRef2 = changeName.bind(objRef2, 'New Name', 'test');
 
   // console.log(objRef1);
   bindRef1('Bind');
@@ -89,7 +86,7 @@ printWhich === 'bind' ? (() => {
   // console.log(objRef2);
 
   /* bound references remains */
-  console.log('objRef1: ', objRef1);
+  console.log('\nobjRef1: ', objRef1);
   objRef2.foreignKey = bindRef1;;
   objRef2.foreignKey('changing objRef1 _name by calling objRef2 property (changeName function thats bound to objRef1)');
   delete objRef2.foreignKey;

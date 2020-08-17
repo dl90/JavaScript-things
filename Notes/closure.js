@@ -24,5 +24,19 @@ function enclose() {
   }
 }
 
-const test = new enclose()
-test.print()
+const test = new enclose();
+test.print();
+
+/*
+  Scope
+*/
+var x = 5;
+function f() {
+  x = 6;
+  var x = 11;
+  console.log("Within f() x =", x);
+}
+
+console.log("Before f: x =", x);
+f();
+console.log("After f: x =", x);

@@ -8,6 +8,10 @@ console.log(str.indexOf(333));
 console.log(str.padStart(10, 'a')); // first arg is desired str length, second arg is whats used to pad
 console.log(str.repeat(10));
 
+var a = "Don";
+var b = 123
+console.log(" thie is a test for %s and it is %i", a, b);
+
 // *** rest parameters ***
 function max(...numbers) {
   let result = -Infinity;

@@ -1,9 +1,8 @@
 const readline = require("readline-sync");
-let loop = true;
-let stringHistory = "";
+let loop = true, input, stringHistory = "";
 
 do {
-  let input = readline.question("Pick an instrument: ").toLowerCase();
+  input = readline.question("Pick an instrument: ").toLowerCase();
 
   switch (input) {
     case "guitar":
@@ -27,13 +26,29 @@ do {
       console.log("Enter a valid instrument");
   }
 
-
 } while (loop);
 
-
-if (stringHistory.length < 1) {
-  console.log("Thanks for playing!")
-  console.log("You have no history");
-} else {
+stringHistory.length < 1 ?
+  console.log("Thanks for playing!", "\nYou have no history") :
   console.log("Your history was: \n" + stringHistory);
-}
+
+
+// const readline = require("readline-sync");
+// let userInput;
+// while (true) {
+//   userInput = readline.question("Enter any fruit: ");
+//   userInput = userInput.trim().toLowerCase();
+
+//   if (userInput === "quit") break;
+//   switch (userInput) {
+//     case 'oranges':
+//       console.log('Oranges are $0.59 a pound.');
+//       break;
+//     case 'apples':
+//       console.log('Apples are $0.32 a pound.');
+//       break;
+//     default:
+//       console.log('Sorry, we are out of ' + userInput + '.');
+//   }
+//   console.log("Is there anything else you'd like?");
+// }
