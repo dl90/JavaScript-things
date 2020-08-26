@@ -50,9 +50,6 @@ test = null;
 // x = null;
 // console.log(x)
 
-/* Wrapper types object representing primitive types */
-// Number String Boolean
-
 const account = {
   account_number: 1234,
   1: 2000,
@@ -69,8 +66,10 @@ const account = {
 /* To check if property is enumerable (non enumerable properties are built in / internal (in built objects) properties) */
 // console.log(account.propertyIsEnumerable("toString"), account.propertyIsEnumerable("length"), account.propertyIsEnumerable(1));
 
-/* [[PUT]] => allocate new memory (new object/object property) */
-/* [[SET]] => reassign memory (changing existing object property) */
+/*
+  [[PUT]] => allocate new memory (new object/object property)
+  [[SET]] => reassign memory (changing existing object property)
+*/
 
 
 

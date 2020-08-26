@@ -1,11 +1,8 @@
-/**
- * @author Don (dl90)
- * @note prototype property
- */
-
-/* Prototype property is shared between all instances and points to the constructor function's prototype property */
-/* 1. Reduces memory usage with many instances */
-/* 2. Inheritance with prototype chaining */
+/*
+  Prototype property is shared between all instances and points to the constructor function's prototype property
+    1. Reduces memory usage with many instances
+    2. Inheritance with prototype chaining
+*/
 const thing = {
   "name": "thing"
 };
@@ -13,21 +10,24 @@ const print1 = () => {
   console.log("name" in thing, thing.hasOwnProperty("name"));
   console.log("hasOwnProperty" in thing, thing.hasOwnProperty("hasOwnProperty"));
   console.log(thing.hasOwnProperty.toString());
-  /* prototype belongs to the JavaScript's Object class and is shared with all object instances */
+
+  // prototype belongs to the JavaScript's Object class and is shared with all object instances
   console.log(Object.prototype.hasOwnProperty("hasOwnProperty"));
 
-  /* the objects prototype reference is the same as Object.prototype */
+  // the objects prototype reference is the same as Object.prototype
   console.log(Object.getPrototypeOf(thing) === Object.prototype); // compares thing.prototype with Object.prototype
   console.log(Object.prototype.isPrototypeOf(thing)); // Object.prototype is the prototype of thing instance
 }
 // print1()
 
-/* Order of property search (scope chain) */
-/* 1. Local (owned by object) */
-/* 2. Object.prototype (owned by Object.prototype) */
-/* 3. Returns undefine if none found */
+/*
+  Order of property search (scope chain)
+    1. Local (owned by object)
+    2. Object.prototype (owned by Object.prototype)
+    3. Returns undefine if none found
+*/
 
-/* overriding inherited prototype properties */
+// overriding inherited prototype properties
 const print2 = () => {
   console.log(thing.toString());
   thing.toString = function () { return this.name };
@@ -72,16 +72,17 @@ function Aircraft() {
 }
 
 
-
-/* print function moved to prototype which is shared by all instances of Aircraft */
+// print function moved to prototype which is shared by all instances of Aircraft
 Aircraft.prototype.print = function () { console.log(this._name, this._type, this._role) };
 
-/* defining multiple prototypes */
-/* Note: Objects instantiated before prototype assignment/changes => those instances will not have the new prototype */
+/*
+  defining multiple prototypes
+  Note: Objects instantiated before prototype assignment/changes => those instances will not have the new prototype
+*/
 Aircraft.prototype = {
 
-  /* Note: constructor property must be included in prototype or this will be treated as a generic object */
-  /* using literal syntax without defining constructor => constructor from Object */
+  // Note: constructor property must be included in prototype or this will be treated as a generic object
+  // using literal syntax without defining constructor => constructor from Object
   constructor: Aircraft,
 
   toString: function () {
@@ -112,6 +113,6 @@ console.log(Bell212.prototype)
 // console.log(F15 instanceof Object, F15.constructor === Object)
 
 
-/* Native type custom prototypes, use with caution */
+// Native type custom prototypes, use with caution
 String.prototype.display = function () { console.log("Hello") }
 "test".display()

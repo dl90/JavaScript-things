@@ -80,4 +80,4 @@ function Laptop(manufacturer, memory, capacity) {
 
 const A = new Laptop("Apple", "16GB", "512GB")
 console.log({ A }, ...Object.keys(A))
-A.display()
+A.display();

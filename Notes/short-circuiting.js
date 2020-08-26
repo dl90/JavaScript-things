@@ -1,5 +1,5 @@
 console.log(null || 1);
-console.log(0/0 || `howdy`);
+console.log(0 / 0 || `howdy`);
 
 // For ||, if the left value is 0, NaN, or "", the right value is taken.
 

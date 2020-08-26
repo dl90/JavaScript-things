@@ -1,13 +1,10 @@
-/**
- * @author Don (dl90)
- * @note Functions review
- */
+/*
+  All functions in JavaScript are objects => reference types
+  Primitive types | Reference types (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
+  primitives = immutable
+*/
 
-/* All functions in JavaScript are objects => reference types */
-/* Primitive types | Reference types (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures) */
-/* primitives = immutable */
-
-// let func = new Function(['console.log(123 - 3)', 'console.log("b")', 'console.log("c")']);
+// let func = new Function(['console.log(123 - 3)', 'console.log("b")']);
 // func()
 
 /* declarative (hoists) */
@@ -19,19 +16,19 @@ const name1 = function (param) { console.log(param) }
 /* Default argument */
 function power(base, exponent = 2) {
   let result = 1;
-  for (let count = 0; count < exponent; count++) {
-    result *= base;
-  }
+  for (let count = 0; count < exponent; count++) result *= base;
   return result;
 };
 // console.log(power(5));
 // console.log(power(5, 5));
 
 
-/* Javascript functions can be passed any number of parameter */
-/* Extra params are not used but can be accessed */
-/* Note: this also means JS does not support function overloading */
-/* In cases of functions with the same namespace, The most recently defined function will be used */
+/*
+  Javascript functions can be passed any number of parameter
+  Extra params are not used but can be accessed
+  Note: this means JS does not support function overloading
+  In cases of functions with the same namespace, the last defined function will be used
+*/
 function extraArgs(arg) {
   console.log(...arguments) // all arguments passed to function
   console.log(extraArgs.length) // Number of named arguments (arguments in parentheses)
@@ -44,7 +41,7 @@ function product() {
   let result = 1;
   for (let i = 0; i < arguments.length; i++) {
     result *= arguments[i];
-    console.log(arguments[i]);
+    // console.log(arguments[i]);
   }
   return result;
 }
@@ -52,14 +49,15 @@ function product() {
 // console.log(product());
 // console.log(product(undefined));
 
-
-/* To implement function overloading, conditionals can be used on arguments */
-/* Another way is to explicitly check argument variables against undefined */
+/*
+  To implement function overloading, conditionals can be used on arguments
+  Another way is to explicitly check argument variables against undefined
+*/
 function JSOverload() {
   const options = {
     1: () => { return arguments[0] },
     2: () => { return arguments[0] + arguments[1] },
-    3: () => { return arguments[0] * arguments[2] + arguments[1] }
+    3: () => { return arguments[0] * arguments[1] + arguments[2] }
   }
   if (arguments.length <= 3) {
     return options[arguments.length].call(this);
