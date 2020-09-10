@@ -38,7 +38,7 @@ const print2 = () => {
 // print2()
 
 
-function Aircraft() {
+function Aircraft () {
   Object.defineProperties(this, {
     "_name":
     {

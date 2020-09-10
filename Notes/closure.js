@@ -10,7 +10,7 @@
   This is because under the hood, closures may require the engine to keep the outer variables (called “the environment”) around even after the function call.
   This overhead is acceptable in JavaScript, but it can be a performance concern for the very low-level languages.
 */
-function enclose() {
+function enclose () {
   let test = "testing"
 
   this.print = () => {
@@ -19,7 +19,7 @@ function enclose() {
     console.log(test)
   }
 
-  function testChange() {
+  function testChange () {
     test = "not testing"
   }
 }
@@ -31,7 +31,7 @@ test.print();
   Scope
 */
 var x = 5;
-function f() {
+function f () {
   x = 6;
   var x = 11;
   console.log("Within f() x =", x);

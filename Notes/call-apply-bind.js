@@ -13,15 +13,15 @@ const objExpression = {
 // objExpression.print();
 
 // external functions (used as methods)
-function changeID() {
+function changeID () {
   this._id = arguments[0];
   arguments.length > 1 ? console.log(arguments) : null;
 }
-function changeName() {
+function changeName () {
   this._name = arguments[0];
   arguments.length > 1 ? console.log(arguments) : null;
 }
-function printIdName() {
+function printIdName () {
   this._id !== undefined && this._name !== undefined ?
     console.log(this._id, this._name) :
     (() => { throw new Error('Undefined id or name') })();
@@ -40,7 +40,7 @@ const objRef2 = {
 /* Call */
 /* Note: when no reference is passed to call, it uses the enclosing scope (global/parent) */
 printWhich === 'call' ? printIdName.call(objRef1) : null
-function fakeGlobal() {
+function fakeGlobal () {
   this._id = 99999;
   this._name = 'global';
   printIdName.call();

@@ -85,7 +85,7 @@ BMW.year = 2010
 
 
 /* constructor based */
-function Doctor(name) {
+function Doctor (name) {
   Object.defineProperties(this, {
     "_name": {
       writable: true,
@@ -105,7 +105,7 @@ Doctor.prototype = {
   }
 }
 
-function Surgeon(name, type) {
+function Surgeon (name, type) {
   this.name = name;
   Object.defineProperties(this, {
     "_type": {
@@ -144,7 +144,7 @@ Surgeon.prototype.toString = function () { return `[Surg: ${this.name} ${this.ty
 
 
 
-function Boat(model, year) {
+function Boat (model, year) {
   Object.defineProperties(this, {
 
     "_model": {
@@ -177,7 +177,7 @@ Boat.prototype = {
   }
 }
 
-function SmallBoat(model, year) {
+function SmallBoat (model, year) {
   Boat.call(this, model, year)
 }
 SmallBoat.prototype = new Boat()
@@ -189,7 +189,7 @@ SmallBoat.prototype.drive = function () {
   return Boat.prototype.drive.call(this) + " from SmallBoat prototype";
 }
 
-function LargeBoat(model, year) {
+function LargeBoat (model, year) {
   /* Note: no super in JavaScript so parent constructor is invoked with call */
   Boat.call(this, model, year)
 }

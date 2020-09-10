@@ -1,17 +1,17 @@
-const referenceOne = add;
-referenceOne(3, 7);
+const referenceOne = add
+referenceOne(3, 7)
 
 const referenceTwo = add;
 referenceOne(3, 6);
 
-function add(num1, num2) {
+function add (num1, num2) {
     return num1 + num2;
 }
 
 //adding a reference of a function on the second parameter.
 //no diffeente to referenceOne or referenceTwo.
 //addTwo is a higher order function, addRefernce is a callback function.
-function addTwo(num1, addReference) {
+function addTwo (num1, addReference) {
     //2 is hardcoded
     return addReference(num1, 2);
 }
@@ -19,7 +19,7 @@ function addTwo(num1, addReference) {
 addTwo(7, add);
 
 //***Function declaration syntax (explicitly using the function keyworkd, naming it ...)
-function callback(itemInList, index, array) {
+function callback (itemInList, index, array) {
     console.log(itemInList + " is at position: " + index);
 
     //new way of concat string  ***(string interperlation syntax)

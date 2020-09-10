@@ -106,23 +106,23 @@ const creditCard = {
   "_name": "John",
 
   // accessor (getter)
-  get name() { return this._name },
+  get name () { return this._name },
 
   // mutator (setter)
-  set name(arg) { this._name = arg }
+  set name (arg) { this._name = arg }
 }
 // console.log(creditCard.name, creditCard.name = "Doe", creditCard)
 /* Note: though not always needed, accessors and mutator properties allows additional logic to be incorporated */
 
 const getOnly = {
   "_pw": "abc",
-  get pw() { return this._pw }
+  get pw () { return this._pw }
 }
 // console.log(getOnly.pw = 1, getOnly)
 
 const setOnly = {
   "_email": "test@test.com",
-  set email(arg) { this._email = arg }
+  set email (arg) { this._email = arg }
 }
 // console.log(setOnly, setOnly.email = "new@new.com", setOnly) // console.log evaluate setter first?!?!
 

@@ -21,7 +21,7 @@
 const fs = require("fs");
 
 let file = fs.readFile("./file.csv", callBackFunction);
-function callBackFunction() {
+function callBackFunction () {
   // this will run after livUV loads the file.
   // this is where you put code that depends on readFile
 }
@@ -40,7 +40,7 @@ let arr = [1, 2, 3, 4, 5];
   a name gives a function a reference
 */
 let mylooper = function (ele) { console.log(ele) }
-function looper(ele) { console.log(ele) }
+function looper (ele) { console.log(ele) }
 
 // forEach is going to loop through each item in array, each time it loops through
 // it runs a callback function with the element

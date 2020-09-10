@@ -8,13 +8,13 @@
 // func()
 
 /* declarative (hoists) */
-function name(param) { console.log(param) };
+function name (param) { console.log(param) };
 
 /* expression (!hoists) */
 const name1 = function (param) { console.log(param) }
 
 /* Default argument */
-function power(base, exponent = 2) {
+function power (base, exponent = 2) {
   let result = 1;
   for (let count = 0; count < exponent; count++) result *= base;
   return result;
@@ -29,7 +29,7 @@ function power(base, exponent = 2) {
   Note: this means JS does not support function overloading
   In cases of functions with the same namespace, the last defined function will be used
 */
-function extraArgs(arg) {
+function extraArgs (arg) {
   console.log(...arguments) // all arguments passed to function
   console.log(extraArgs.length) // Number of named arguments (arguments in parentheses)
   return "Yes";
@@ -37,7 +37,7 @@ function extraArgs(arg) {
 // extraArgs(1, 2, 3, 4, 5, "No", true, false, null);
 // console.log(console.log.length);
 
-function product() {
+function product () {
   let result = 1;
   for (let i = 0; i < arguments.length; i++) {
     result *= arguments[i];
@@ -53,7 +53,7 @@ function product() {
   To implement function overloading, conditionals can be used on arguments
   Another way is to explicitly check argument variables against undefined
 */
-function JSOverload() {
+function JSOverload () {
   const options = {
     1: () => { return arguments[0] },
     2: () => { return arguments[0] + arguments[1] },
@@ -72,7 +72,7 @@ function JSOverload() {
 
 /* Exponent acts as a counter. */
 /* Note: Running through a simple loop is generally cheaper than calling a function multiple times. */
-function recursivePower(base, exponent) {
+function recursivePower (base, exponent) {
   if (exponent == 0) {
     return 1;
   } else {
@@ -87,7 +87,7 @@ function recursivePower(base, exponent) {
  * The function value it returns, which is stored in twice, remembers this environment.
  * So when that is called, it multiplies its argument by 2
  */
-function multiplier(factor) {
+function multiplier (factor) {
   return number => number * factor;
 };
 // let twice = multiplier(2);
@@ -96,8 +96,8 @@ function multiplier(factor) {
 
 
 /* Interesting function, not the shortest way (trial and error, tires +5 first then *3, like a binary tree). */
-function findSolution(target) {
-  function find(current, history) {
+function findSolution (target) {
+  function find (current, history) {
     if (current == target) {
       return history;
     } else if (current > target) {
