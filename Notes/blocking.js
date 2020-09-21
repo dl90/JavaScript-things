@@ -18,36 +18,36 @@
 
   node is incredible fast when handing high concurrency requests
 */
-const fs = require("fs");
+import { readFile, readFileSync } from 'fs'
 
-let file = fs.readFile("./file.csv", callBackFunction);
+const file = readFile('./file.csv', callBackFunction)
 function callBackFunction () {
   // this will run after livUV loads the file.
   // this is where you put code that depends on readFile
 }
 
 // following code will run (not get blocked) because it not dependent on readFile
-let ele = document.getElementById("ele");
-ele.addEventListener("click", function () {
-  console.log("clicked");
+const ele = document.getElementById('ele')
+ele.addEventListener('click', function () {
+  console.log('clicked')
 })
 
 // call-back functions allows us to use declarative code
-let arr = [1, 2, 3, 4, 5];
+const arr = [1, 2, 3, 4, 5]
 
 /*
   same as: anonymous function (function has no name)
   a name gives a function a reference
 */
-let mylooper = function (ele) { console.log(ele) }
+const mylooper = function (ele) { console.log(ele) }
 function looper (ele) { console.log(ele) }
 
 // forEach is going to loop through each item in array, each time it loops through
 // it runs a callback function with the element
-arr.forEach(looper);
+arr.forEach(looper)
 
 // different variation with anonymous function
 arr.forEach(function (ele) { console.log(ele) })
 
-let file = fs.readFileSync(file); // don't use, it will block your code until file is read
-readFile(file, function (contents) { console.log(contents); }) //non blocking
+const file1 = readFileSync(file) // don't use, it will block your code until file is read
+readFile(file, function (contents) { console.log(contents) }) // non blocking

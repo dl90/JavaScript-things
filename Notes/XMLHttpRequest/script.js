@@ -1,7 +1,7 @@
 window.onload = () => {
   function request (url, cb) {
     return new Promise((resolve, reject) => {
-      const req = new XMLHttpRequest()
+      const req = new window.XMLHttpRequest()
       req.onreadystatechange = () => {
         if (req.readyState === 4 && req.status === 200) resolve(cb(JSON.parse(req.response)))
       }
@@ -30,10 +30,10 @@ window.onload = () => {
     })
   }
 
-  function get (url, cb) {
-    return fetch(url)
-      .then(res => res.json())
-      .then(val => cb(val))
+  async function get (url, cb) {
+    const res = await window.fetch(url)
+    const val = await res.json()
+    return cb(val)
   }
 
   const map = new Map()
