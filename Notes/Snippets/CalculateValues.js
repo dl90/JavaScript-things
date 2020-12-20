@@ -1,7 +1,7 @@
 const result = calculateValues(['1', '+', '500', '-', '251', '+', '50']);
 console.log(result);
 
-function calculateValues(arr) {
+function calculateValues (arr) {
     let result = 0;
 
     for (let i = 0; i < arr.length; i++) {

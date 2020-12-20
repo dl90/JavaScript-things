@@ -1,7 +1,7 @@
 const fs = require("fs");
 const dir = __dirname + "/test";
 
-function func(dirName, fileExtension, callback) {
+function func (dirName, fileExtension, callback) {
   fs.readdir(dirName, "utf-8", (err, list) => {
     if (err) {
       throw err.message;
@@ -15,13 +15,13 @@ function func(dirName, fileExtension, callback) {
   })
 }
 
-function func2(arr) {
+function func2 (arr) {
   for (element of arr) {
     console.log(element)
   }
 }
 
-function expoort(dirName, fileExtension) {
+function expoort (dirName, fileExtension) {
   func(dirName, fileExtension, func2)
 }
 

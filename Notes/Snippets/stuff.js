@@ -1,4 +1,4 @@
-function filterNames(arrName) {
+function filterNames (arrName) {
     let newArr = [];
 
     for (let i = 0; i < arrName.length; i++) {
@@ -25,7 +25,7 @@ function filterNames(arrName) {
     return newArr;
 }
 
-function getNumberOfEvens(numArr) {
+function getNumberOfEvens (numArr) {
     let evenNum = 0;
 
     for (let i = 0; i < numArr.length; i++) {
@@ -37,7 +37,7 @@ function getNumberOfEvens(numArr) {
     return evenNum;
 }
 
-function makeHistogram(arrString) {
+function makeHistogram (arrString) {
     let obj = {};
 
     for (let i = 0; i < arrString.length; i++) {

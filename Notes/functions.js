@@ -1,3 +1,4 @@
+
 /*
   All functions in JavaScript are objects => reference types
   Primitive types | Reference types (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
@@ -109,3 +110,9 @@ function findSolution (target) {
   return find(1, "1");
 };
 // console.log(findSolution(24));
+
+/*
+  Short circuit evaluation will only evaluate the right side when necessary
+  If its ||, if left side is true, right side is not evaluated.
+  If its &&, if left side is false, right side is not evaluated.
+*/

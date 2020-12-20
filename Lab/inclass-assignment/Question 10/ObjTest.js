@@ -178,7 +178,7 @@
 //     }
 //   }
 
-//   //creates object with same 
+//   //creates object with same
 //   for(ele of allArr) {
 //     if(ele !== null && ele !== undefined) {
 //       if(finalSet.value === undefined) {
@@ -251,7 +251,7 @@
 //       }
 //     }
 //   }
-  
+
 //   return finalSet;
 // }
 
@@ -283,7 +283,7 @@
 //       let set2Arr = null; //set
 //       const allArr = [];
 //       const finalSet = {};
-    
+
 //       if(originalSet !== null && originalSet !== undefined) {
 //         set1Arr = Object.keys(originalSet);
 //       }
@@ -317,7 +317,7 @@
 //     };
 
 
-  //------------------------------------------------------------//
+//------------------------------------------------------------//
 
 //   const obj1 = {
 //     "1":true,
@@ -357,17 +357,17 @@
 //   } else {
 //     return false;
 //   }
-// } 
+// }
 const items = {};
 console.log(add('1'));
 console.log(add('1'));
 console.log(add('b'));
 
 function add (value) {
-  if(value !== null && value !== undefined) {
+  if (value !== null && value !== undefined) {
     const setArr = Object.keys(items)
 
-    if(setArr.includes(value)) {
+    if (setArr.includes(value)) {
       return false;
     } else if (items.value === undefined) {
       items[value] = true;

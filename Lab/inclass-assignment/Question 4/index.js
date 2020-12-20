@@ -14,7 +14,7 @@
 
 fizzBuzz(100);
 
-function fizzBuzz(n) {
+function fizzBuzz (n) {
   const [fizz, buzz] = [3, 5];
   let returnStr = "";
 

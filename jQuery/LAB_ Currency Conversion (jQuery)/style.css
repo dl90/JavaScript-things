@@ -1,5 +1,5 @@
 body {
-  font: 12pt Arial;   
+  font: 12pt Arial;
 }
 
 div.card {
@@ -24,7 +24,7 @@ div.card h2 {
    background-color: #058;
    text-align: center;
 }
-   
+
 label {
    display: block;
 }

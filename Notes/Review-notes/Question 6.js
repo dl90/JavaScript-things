@@ -19,7 +19,7 @@ console.log(b);
 // guessGame(8);
 
 //one way of running it
-function guessGame(arg) {
+function guessGame (arg) {
   const randNum = arg
   let guess;
   let text = "Guess a num:"
@@ -41,7 +41,7 @@ function guessGame(arg) {
   console.log(`took you ${tries + 1}`);
 }
 
-function highOrLowCheck(prevGuess, guess, text, tries, highOrLow) {
+function highOrLowCheck (prevGuess, guess, text, tries, highOrLow) {
 
   if (prevGuess === guess) {
     text = `you guessed that already, its too ${highOrLow} try again `

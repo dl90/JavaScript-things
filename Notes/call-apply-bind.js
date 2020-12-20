@@ -1,3 +1,4 @@
+
 /* print method built in (tight coupling) */
 const objExpression = {
   _id: 1,

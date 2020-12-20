@@ -9,14 +9,14 @@
 
 // vowels('Hi There!?');
 
-function vowels(str) {
+function vowels (str) {
   const vowelsArr = ['a', 'e', 'i', 'o', 'u'];
   let strArr = str.toLowerCase().split('');
   let counter = 0;
 
   // console.log(strArr);
-  for(ele of strArr) {
-    if(vowelsArr.includes(ele)) {
+  for (ele of strArr) {
+    if (vowelsArr.includes(ele)) {
       counter += 1;
     }
   }

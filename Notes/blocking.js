@@ -1,3 +1,5 @@
+import { readFile, readFileSync } from 'fs'
+
 /*
   node.js used for real-time event driven systems
   node.js has async non blocking io
@@ -18,7 +20,6 @@
 
   node is incredible fast when handing high concurrency requests
 */
-import { readFile, readFileSync } from 'fs'
 
 const file = readFile('./file.csv', callBackFunction)
 function callBackFunction () {

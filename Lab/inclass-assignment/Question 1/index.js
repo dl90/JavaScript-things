@@ -10,7 +10,7 @@
 
 console.log(anagrams('abcdefg!@#', 'gfedcba'));
 
-function anagrams(stringA, stringB) {
+function anagrams (stringA, stringB) {
   const strALower = stringA.toLowerCase().match(/[a-z]+/g).join(); // regix (multiple a to z)
   const strBLower = stringB.toLowerCase().match(/[a-z]+/g).join(); // /g => global match (whole string)
 
@@ -21,7 +21,7 @@ function anagrams(stringA, stringB) {
   populate(strALower, strAObj, strAArr);
   populate(strBLower, strBObj, strBArr);
 
-  function populate(str, obj, arr) {
+  function populate (str, obj, arr) {
     for (let i = 0; i < str.length; i++) {
       if (obj[str.charAt(i)]) {
         obj[str.charAt(i)] += 1;

@@ -1,3 +1,4 @@
+
 /* IIFE (immediately invoked function expressions) */
 const account = (function () {
   /* balance scoped to the anonymous function (inaccessible outside scope) */

@@ -7,12 +7,12 @@
 
 maxChar("aa111bb");
 
-function maxChar(str) {
+function maxChar (str) {
   const strArr = str.split('');
   const strObj = {};
 
-  for(let i = 0; i < strArr.length; i++) {
-    if(strObj[strArr[i]] === undefined) {
+  for (let i = 0; i < strArr.length; i++) {
+    if (strObj[strArr[i]] === undefined) {
       strObj[strArr[i]] = 1;
     } else {
       strObj[strArr[i]] += 1;
@@ -22,10 +22,10 @@ function maxChar(str) {
   let objArr = Object.entries(strObj);
   // console.log(objArr);
 
-  let topPair = [null,0];
-  for(let i = 0; i < objArr.length; i++) {
+  let topPair = [null, 0];
+  for (let i = 0; i < objArr.length; i++) {
 
-    if(topPair[1] < objArr[i][1]) {
+    if (topPair[1] < objArr[i][1]) {
       topPair = objArr[i];
     }
   }

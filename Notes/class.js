@@ -1,7 +1,3 @@
-/**
- * @author Don (dl90)
- * @note ES6
- */
 
 class Test {
   constructor (arg1, arg2) {

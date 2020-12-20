@@ -1,3 +1,4 @@
+
 /*
   functions that can pause and continue (iterable)
   iterator: Arrays, Strings, Maps, Sets, NodeLists (childNodes, querySelectorAll)

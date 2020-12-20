@@ -1,3 +1,4 @@
+
 /*
   Whenever a function accesses a variable that is declared outside of it, we say it is a closure.
   Some people will refer to the nested function itself as “the closure”.
@@ -10,6 +11,7 @@
   This is because under the hood, closures may require the engine to keep the outer variables (called “the environment”) around even after the function call.
   This overhead is acceptable in JavaScript, but it can be a performance concern for the very low-level languages.
 */
+
 function enclose () {
   let test = "testing"
 

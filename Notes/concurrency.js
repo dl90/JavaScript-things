@@ -30,3 +30,20 @@ async function run () {
 }
 
 run()
+
+function renamePromises (originalPath, newPath) {
+  const fs = require('fs')
+  return new Promise((resolve, reject) => {
+    fs.rename(originalPath, newPath, (err) => {
+      if (err) return reject(err.message)
+      else resolve(console.log('rename finished'))
+    })
+  })
+}
+
+renamePromises(__dirname + '/text1.txt', __dirname + '/text2.txt')
+  .then(
+    () => console.log('no problems here'),
+    () => console.log('specific handler')
+  )
+  .catch(() => console.log('general handler'))

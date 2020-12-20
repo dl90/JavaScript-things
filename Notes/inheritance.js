@@ -1,13 +1,10 @@
-/**
- * @author Don (dl90)
- * @note Inheritance in JavaScript (pre ES6)
- */
 
-/* extend one object from another (object based inheritance) */
-/* Inheritance through prototype chaining */
+/*
+  extend one object from another (object based inheritance)
+  Inheritance through prototype chaining
+*/
 
-
-/* New Objects by default inherits all Object prototype  */
+/* Objects by default inherits all Object prototype  */
 const Test = {
   "root": "parent",
   "print": function () {

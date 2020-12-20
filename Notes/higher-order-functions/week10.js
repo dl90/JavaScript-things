@@ -17,7 +17,7 @@ const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 //   newArr.push(ele)
 //   } else if (index === 0) {
 //     newArr.push(ele)
-//   } 
+//   }
 // })
 // console.log(newArr);
 
@@ -64,5 +64,5 @@ const sum = arr.reduce((accumulator, currentvalue) => {
   console.log(accumulator);
   console.log(currentvalue);
   return accumulator + currentvalue
-}, 0) //can add starting value for accumulator as second param, 
+}, 0) //can add starting value for accumulator as second param,
 console.log(sum);

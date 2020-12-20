@@ -18,20 +18,20 @@ test("adding 2 to argument", function () {
 
 test("adds both arguments together", function () {
 
-    expect(add(2,3)).toBe(5);
-    expect(add(2,-3)).not.toBe(5);
+    expect(add(2, 3)).toBe(5);
+    expect(add(2, -3)).not.toBe(5);
 
 });
 
 test("adds three arguments together", function () {
 
-    expect(addd(1,2,3)).toBe(6);
+    expect(addd(1, 2, 3)).toBe(6);
 
 });
 
 test("subtracts second arg from first arg", function () {
 
-    expect(subtract(2,1)).toBe(1);
+    expect(subtract(2, 1)).toBe(1);
 });
 
 test("multiply arg by 2", function () {
@@ -41,7 +41,7 @@ test("multiply arg by 2", function () {
 
 test("multiply all three args", function () {
 
-    expect(multiplyy(2,3,4)).toBe(24);
+    expect(multiplyy(2, 3, 4)).toBe(24);
 });
 
 test("squares input arg", function () {

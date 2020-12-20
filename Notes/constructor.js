@@ -1,7 +1,3 @@
-/**
- * @author Don (dl90)
- * @note Object constructor functions (pre ES6)
- */
 
 /* Constructors functions are used to instantiate a 'new' object (similar to Class, uses function) */
 function Aircraft () {
@@ -50,6 +46,7 @@ const A10 = new Aircraft('aaa', 'bbb', 'ccc')
 const A11 = new Aircraft()
 console.log(A10 instanceof Aircraft, A10.constructor === Aircraft) // A10.constructor.toString()
 console.log({ A10 }, Object.keys(A10))
+console.log(Object.getOwnPropertyDescriptor(A10, 'name'))
 A10.print()
 A10._type = 'xyz'
 A10.name = '123'

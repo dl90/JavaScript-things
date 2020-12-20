@@ -10,7 +10,7 @@ $(function () {
   })
 });
 
-function get() {
+function get () {
   $(".list").html("");
   $.ajax({
     url: "/thing",
@@ -23,7 +23,7 @@ function get() {
   });
 }
 
-function post() {
+function post () {
   $.ajax({
     url: "/",
     type: "post",

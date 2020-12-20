@@ -18,7 +18,7 @@ const map = array1.map(x => mapper(x));
 console.log(array1);
 console.log(map);
 
-function mapper(input) {
+function mapper (input) {
     return input + 10;
 }
 

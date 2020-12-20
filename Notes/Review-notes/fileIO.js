@@ -4,7 +4,7 @@ const dataPoints = "dataPoints";
 
 getUserInput()
 
-function getUserInput() {
+function getUserInput () {
   const input = readLine.question("Please enter your two points as follows: x1,y1,x2,y2: ");
 
   // console.log(input);
@@ -16,7 +16,7 @@ function getUserInput() {
 
 }
 
-function makeDir() {
+function makeDir () {
   return new Promise((resolve, reject) => {
     fs.mkdir(__dirname + `/${dataPoints}`, (err) => {
       if (err) {
@@ -28,7 +28,7 @@ function makeDir() {
   })
 }
 
-function writeUserInputToFile(str) {
+function writeUserInputToFile (str) {
   return new Promise((resolve, reject) => {
     fs.writeFile(__dirname + `/${dataPoints}/points.txt`, str, (err) => {
       if (err) {

@@ -6,7 +6,7 @@ range [0, upperBound].
 
 */
 
-function sumOfPositiveInts(upperBound) {
+function sumOfPositiveInts (upperBound) {
     let sum = 0;
 
     if (upperBound >= 0) {

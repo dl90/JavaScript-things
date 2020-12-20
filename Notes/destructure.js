@@ -1,3 +1,4 @@
+
 hotSwap(10, 1)
 function hotSwap (a, b) {
   [a, b] = [b, a]

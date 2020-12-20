@@ -10,7 +10,7 @@
 
 console.log(chunk([1, 2, 3, 4], 2));
 
-function chunk(array, size) {
+function chunk (array, size) {
   const container = [];
   let arrLength = array.length;
 

@@ -1,4 +1,4 @@
-$("button").click(function() {
+$("button").click(function () {
   // Scramble the poem...
   const $first = $("p strong:eq(0)").text();
   const $second = $("p strong:eq(1)").text();

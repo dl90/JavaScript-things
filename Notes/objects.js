@@ -1,7 +1,3 @@
-/**
- * @author Don (dl90)
- * @note Objects review
- */
 
 // create objects with bindings
 const [abc, bcd] = ["short", "hand"];

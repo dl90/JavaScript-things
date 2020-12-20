@@ -9,7 +9,7 @@
 
 console.log(capitalize('look, it is working!'));
 
-function capitalize(str) {
+function capitalize (str) {
   const strWordArr = str.split(" ");
   let returnStr = ""
 

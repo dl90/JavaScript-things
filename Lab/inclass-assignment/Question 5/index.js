@@ -8,7 +8,7 @@
 //   palindrome("abcdefg") === false
 
 //palindrome("ab b ba")
-function palindrome(str) {
+function palindrome (str) {
   let state = false;
   const strArr = str.split('');
 

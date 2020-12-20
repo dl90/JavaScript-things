@@ -1,4 +1,4 @@
-function countLetters(string) {
+function countLetters (string) {
     var obj = {};
 
     for (let i = 0; i < string.length; i++) {

@@ -45,7 +45,7 @@ console.log(totaleAgeAbove18);
 
 // const ageAbove18 = (person) => person.age >= 18;
 
-// const addCoffeeLoverProperty = (person) => { 
+// const addCoffeeLoverProperty = (person) => {
 //     person.coffeeLover = coffeeLovers.includes(person.name);
 //     return person;
 // };
