@@ -1,0 +1,14 @@
+{
+  "name": "async",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cb-to-promises.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "log-update": "^4.0.0"
+  }
+}
