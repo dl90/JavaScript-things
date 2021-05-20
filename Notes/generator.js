@@ -57,7 +57,15 @@ function* ajax (count) {
     yield get(id++)
   }
 }
-const generator4 = ajax(10)
-for (const r of generator4) {
-  r.then(res => console.log(res))
+
+run()
+async function run () {
+  const generator4 = ajax(10)
+  const res = []
+
+  for (const r of generator4)
+    res.push(r)
+
+  const data = await Promise.all(res)
+  console.log(data)
 }

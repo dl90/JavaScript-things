@@ -79,7 +79,7 @@ const ref = counter()
 for (let i = 0; i < 10; i++) {
 
   // counter()()    /* global _count increments */
-  // ref()          /* local count increments */
+  ref()          /* local count increments */
   // console.log('--------')
 }
 

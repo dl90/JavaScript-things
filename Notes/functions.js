@@ -71,8 +71,10 @@ function JSOverload () {
 // console.log(JSOverload(5, 5, 2, 2));
 
 
-/* Exponent acts as a counter. */
-/* Note: Running through a simple loop is generally cheaper than calling a function multiple times. */
+/*
+  Exponent acts as a counter
+  Note: Running through a simple loop is generally cheaper than calling a function multiple times.
+*/
 function recursivePower (base, exponent) {
   if (exponent == 0) {
     return 1;
@@ -83,11 +85,11 @@ function recursivePower (base, exponent) {
 // console.log(recursivePower(2, 3));
 
 
-/**
- * Multiplier is called and creates an environment in which its factor parameter is bound to 2.
- * The function value it returns, which is stored in twice, remembers this environment.
- * So when that is called, it multiplies its argument by 2
- */
+/*
+  Multiplier is called and creates an environment in which its factor parameter is bound to 2.
+  The function value it returns, which is stored in twice, remembers this environment (closure)
+  So when that is called, it multiplies its argument by 2
+*/
 function multiplier (factor) {
   return number => number * factor;
 };
@@ -116,3 +118,46 @@ function findSolution (target) {
   If its ||, if left side is true, right side is not evaluated.
   If its &&, if left side is false, right side is not evaluated.
 */
+
+
+/*
+  arrow functions do not have its own this or super binding
+  cant use call, apply, bind
+  no arguments or new.target keywords
+  cant be use as constructor or called using new
+  cant use yield
+*/
+
+const func1 = () => console.log(arguments) // this is pointing to parent scope (global)
+const func1Parent = function () {
+  return nestedFunc1 = () => console.log(arguments) // arguments from parent scope (function)
+}
+
+// func1(1, 2, 3)
+// func1Parent(1, 2, 3)()
+// console.log(arguments)
+
+const func2 = () => this
+const Func2Parent = function () {
+  this.func = () => this
+}
+
+// console.log(func2() === this)
+// const _func2 = new Func2Parent()
+// console.log(_func2.func() === _func2)
+
+this.id = 99
+const func3 = () => console.log(this.id)
+const Func3Parent = function (id) {
+  this.id = id
+}
+Func3Parent.prototype.getId = () => console.log(this.id)
+Func3Parent.prototype._getId = function () { console.log(this.id) }
+
+func3.call({ id: 1 })
+const func3_1 = new Func3Parent(20)
+const func3_2 = new Func3Parent(30)
+// func3_1.getId()              // global scope
+// func3_1.getId.call(func3_1)  // still global scope
+// func3_1._getId()
+// func3_1._getId.call(func3_2)

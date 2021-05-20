@@ -22,7 +22,6 @@ function printIdName () {
     : (() => { throw new Error('Undefined id or name') })()
 }
 
-// Objects
 const objRef1 = {
   _id: 2,
   _name: 'Doe'
@@ -32,9 +31,14 @@ const objRef2 = {
   _name: 'Doe'
 }
 
-/* Call */
-/* Note: when no reference is passed to call, it uses the enclosing scope (global/parent) */
+/*
+  Call
+  Note: when no reference is passed to call, it uses the enclosing scope (global/parent)
+*/
+changeName.call(objRef1, 'Changed')
+changeID.call(objRef1, 99)
 printIdName.call(objRef1)
+
 function fakeGlobal () {
   this._id = 99999
   this._name = 'global'
@@ -44,21 +48,18 @@ function fakeGlobal () {
 fakeGlobal()
 console.log('--------------------------------------------------------------------------------')
 
-/* Apply */
-/* same as call, used to pass reference, but args must be passed as an array */
-changeID.call(objRef1, 2, 3, 4)
+/*
+  Apply
+  same as call, used to pass reference, but args must be passed as an array
+*/
+changeID.apply(objRef1, [9000])
+changeName.apply(objRef1, ['Don'])
 console.log(objRef1)
-
-const testArr = [4, 3, 2, 5, 1, 2]
-changeID.call(objRef1, ...testArr)
+changeName.apply(objRef1, { x: 'doesn\'t', y: 'work' }) // args has to be array
 console.log(objRef1)
-
-changeID.apply(objRef1, [99, 2, 3])
-changeName.apply(objRef1, ['Don', 'Donny'])
-changeName.apply(objRef1, { x: 'DonnyX', y: 'DonnyY' }) // doesn't work, args has to be array
-changeName.apply(objRef1, Object.values({ 2: 'DonnyX', 1: 'DonnyY' }))
-changeName.apply(objRef1, Object.values({ b: 'DonnyX', a: 'DonnyY' })) // orders only if key parsable as Number
-changeName.apply(objRef1, ['DonnyX'])
+changeName.apply(objRef1, Object.values({ 2: 'second', 1: 'first' }))
+console.log(objRef1)
+changeName.apply(objRef1, Object.values({ b: 'b', a: 'a' })) // orders only if key parsable as Number
 console.log(objRef1)
 console.log('--------------------------------------------------------------------------------')
 
@@ -70,18 +71,19 @@ const bindRef1 = changeName.bind(objRef1)
 // args can be passed as the second param of .bind or when calling the reference. Default param is the last param (ie event)
 const bindRef2 = changeName.bind(objRef2, 'New Name', 'test')
 
-// console.log(objRef1);
+console.log(objRef1);
 bindRef1('Bind')
-// console.log(objRef1);
+console.log(objRef1);
 
-// console.log(objRef2);
+console.log(objRef2);
 bindRef2()
-// console.log(objRef2);
+console.log(objRef2);
 
 /* bound references remains */
 console.log('\nobjRef1: ', objRef1)
-objRef2.foreignKey = bindRef1
-objRef2.foreignKey('changing objRef1 _name by calling objRef2 property (changeName function thats bound to objRef1)')
+objRef2.xyz = bindRef1
+objRef2.xyz('changing objRef1 _name by calling objRef2 property (changeName function thats bound to objRef1)')
 delete objRef2.foreignKey
+
 console.log('objRef1: ', objRef1)
 console.log('objRef2: ', objRef2)

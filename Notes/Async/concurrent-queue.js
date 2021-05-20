@@ -1,8 +1,7 @@
 const logUpdate = require('log-update')
 
-const tasks = Array.from({ length: 20 }, () => {
-  return () => new Promise(resolve => setTimeout(resolve, Math.random() * 2100))
-})
+const task = () => new Promise(resolve => setTimeout(resolve, Math.random() * 2100))
+const tasks = Array.from({ length: 20 }, () => task)
 
 function queue (tasks = [], concurrentLimit = 1) {
   const running = []
@@ -31,7 +30,6 @@ function queue (tasks = [], concurrentLimit = 1) {
         run()
       })
     }
-    return completed
   }
 
 }
